@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "kbtu-board": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "kbtu-board"
+    }
+  },
+  "defaultProject": "kbtu-board",
+  "cli": {
+    "analytics": "49e20c93-09da-47c0-b653-986b8e374a6f"
+  }
 }
