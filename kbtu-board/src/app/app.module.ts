@@ -4,27 +4,27 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {MainPageComponent} from './main-page/main-page.component';
-import {PostsListComponent} from './posts-list/posts-list.component';
 import {PostDetailsComponent} from './post-details/post-details.component';
-import {MakePostComponent} from './make-post/make-post.component';
-import {LoginPageComponent} from './login-page/login-page.component';
 import {ErrorPageComponent} from './error-page/error-page.component';
 import {AppRoutingModule} from './app-routing.module';
 import {FooterComponent} from './footer/footer.component';
-import {ProjectDescriptionComponent} from './project-description/project-description.component';
+import {AuthComponent} from './auth/auth.component';
+import {NewPostComponent} from './new-post/new-post.component';
+import {AboutPageComponent} from './about-page/about-page.component';
+import {SearchPageComponent} from './search-page/search-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MainPageComponent,
-    PostsListComponent,
     PostDetailsComponent,
-    MakePostComponent,
-    LoginPageComponent,
     ErrorPageComponent,
     FooterComponent,
-    ProjectDescriptionComponent
+    AuthComponent,
+    NewPostComponent,
+    AboutPageComponent,
+    SearchPageComponent,
   ],
   imports: [
     BrowserModule,
