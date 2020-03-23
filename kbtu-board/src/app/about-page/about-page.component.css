@@ -1,0 +1,26 @@
+.x-page_bg_white {
+    padding-top: 60px;
+    background: #fff;
+}
+
+.x-page {
+    display: block;
+    width: 100%;
+}
+.x-page__content {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    color: #333;
+}
+.x-about-page__layout {
+    display: table;
+    width: 100%;
+    box-sizing: border-box;
+    table-layout: fixed;
+    background: #fff;
+}
+.x-about-page__layout-item {
+    display: table-cell;
+    vertical-align: top;
+}
