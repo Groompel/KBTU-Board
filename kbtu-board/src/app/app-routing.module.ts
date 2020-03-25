@@ -10,8 +10,7 @@ import {SearchPageComponent} from './search-page/search-page.component';
 import {NewPostComponent} from './new-post/new-post.component';
 
 export const ROUTES: Route[] = [
-  {path: '', pathMatch: 'full', redirectTo: '/salem'},
-  {path: 'salem', component: MainPageComponent},
+  {path: '', component: MainPageComponent},
   {path: 'auth', component: AuthComponent},
   {path: 'about', component: AboutPageComponent},
   {path: 'search', component: SearchPageComponent},
