@@ -7,6 +7,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  profileWindowVisible = false;
+
+  toggleProfileWindow() {
+    this.profileWindowVisible = !this.profileWindowVisible;
+  }
+
   constructor() {
   }
 
