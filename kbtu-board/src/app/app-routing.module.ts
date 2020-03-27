@@ -17,6 +17,7 @@ export const ROUTES: Route[] = [
   {path: 'search', component: SearchPageComponent},
   {path: ':sectionName/:postId', component: PostDetailsComponent},
   {path: 'new/:sectionName', component: NewPostComponent},
+  {path:'login', component:AuthComponent},
   {path: '**', component: ErrorPageComponent}
 ];
 
