@@ -169,6 +169,8 @@ $(document).ready(() => {
 
 // Find containers
 function init() {
+  // Remove bg from navbar
+  $(".nav-container").css("background", "none");
   categorySelect = $("#category-select");
   subcategorySelect = $("#subcategory-select");
   searchbarForm = $("form.searchbar");

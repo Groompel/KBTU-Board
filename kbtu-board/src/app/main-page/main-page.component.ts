@@ -61,6 +61,13 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   ]
 
+  getArray(n) {
+    n = parseInt(n);
+    console.log(Array(n).fill(0,0,n));
+
+    return Array(n).fill(0,0,n);
+  }
+
   showAd(id, adType) {
     showAd(id, adType);
   }

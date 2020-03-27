@@ -137,7 +137,7 @@ export const BEST_TEACHERS = [
     faculty: "ФИТ",
     yearOfStudy: 2,
     subjects: "Исчисление 2, Теория Вероятности и Статистика",
-    rating: 8.6,
+    rating: 8,
     quote: "Научу тебя всему, что знаю сам"
 
   },
@@ -151,8 +151,8 @@ export const BEST_TEACHERS = [
     faculty: "ФИТ",
     yearOfStudy: 2,
     subjects: "PP1, PP2, Web Development",
-    rating: 8.6,
-    quote: "Помогу тебе найти силы в тебе"
+    rating: 4,
+    quote: "Помогу тебе найти силы в cебе"
 
   },
   {
