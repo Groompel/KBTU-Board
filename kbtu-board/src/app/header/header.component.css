@@ -1,7 +1,7 @@
 @import "../../styles.css";
 
 .nav-container {
-  background-color: var(--color-primary);
+  /* background-color: var(--color-primary); */
 }
 
 nav {
@@ -41,7 +41,7 @@ nav {
 }
 
 .cta-btn:hover {
-  color: var(--color-black);
+  color: rgb(31, 31, 31);
   background-color: var(--color-accent);
 }
 .cta-btn:active {
@@ -72,6 +72,7 @@ nav {
 
 .profile-window {
   display: none;
+  z-index: 2;
   position: absolute;
   right: 0;
   top: 80px;

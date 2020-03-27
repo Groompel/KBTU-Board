@@ -1,0 +1,562 @@
+<main>
+  <section class="header">
+    <div class="bg"></div>
+    <div class="searchbar-container">
+      <form class="searchbar">
+        <input class="query" name="q" type="text" placeholder="Наушники Airpods Pro, Calculus II..."
+          autocomplete="off" />
+        <input type="hidden" name="category" [value]="selectedCategory.id" />
+        <input type="hidden" name="subcategory" [value]="selectedSubcategory.method" />
+        <div class="select-container" id="category-select">
+          <div class="select-container-inner" (click)="handleClicks('category')">
+            <div class="triangle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="23.81" height="14.102" viewBox="0 0 23.81 14.102">
+                <g id="dropdown-btn" data-name=" dropdown-btn" transform="translate(1.09 1.09)">
+                  <path id="Path_151" data-name="Path 151" d="M.452,0,0,15.961"
+                    transform="translate(21.31 0.001) rotate(45)" fill="none" stroke="#868686" stroke-width="3" />
+                  <path id="Path_152" data-name="Path 152" d="M.454,16.407,0,0"
+                    transform="translate(11.923 11.602) rotate(135)" fill="none" stroke="#868686" stroke-width="3" />
+                </g>
+              </svg>
+            </div>
+            <div class="select" name="category">
+              <div class="selected-option">{{ selectedCategory.name }}</div>
+            </div>
+          </div>
+          <div class="options-window">
+            <option class="select-option category-option" (click)="changeCategoryById(1)">Услуги</option>
+            <option class="select-option category-option" (click)="changeCategoryById(2)">Потеряно и найдено</option>
+            <option class="select-option category-option" (click)="changeCategoryById(3)">Учеба</option>
+          </div>
+        </div>
+
+        <div class="select-container" id="subcategory-select">
+          <div class="select-container-inner" (click)="handleClicks('subcategory')">
+            <div class="triangle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="23.81" height="14.102" viewBox="0 0 23.81 14.102">
+                <g id="dropdown-btn" data-name="dropdown-btn" transform="translate(1.09 1.09)">
+                  <path id="Path_151" data-name="Path 151" d="M.452,0,0,15.961"
+                    transform="translate(21.31 0.001) rotate(45)" fill="none" stroke="#868686" stroke-width="3" />
+                  <path id="Path_152" data-name="Path 152" d="M.454,16.407,0,0"
+                    transform="translate(11.923 11.602) rotate(135)" fill="none" stroke="#868686" stroke-width="3" />
+                </g>
+              </svg>
+            </div>
+            <div class="select" name="category">
+              <div class="selected-option">{{ selectedSubcategory.name }}</div>
+            </div>
+          </div>
+          <div class="options-window">
+            <option data-cat-id="1" class="select-option subcategory-option" (click)="changeSubcategory(1, 'Получить')">
+              Получить</option>
+            <option data-cat-id="1" class="select-option subcategory-option"
+              (click)="changeSubcategory(2, 'Предложить')">Предложить</option>
+            <option data-cat-id="2" class="select-option subcategory-option" (click)="changeSubcategory(1, 'Потерял')">
+              Потерял</option>
+            <option data-cat-id="2" class="select-option subcategory-option" (click)="changeSubcategory(2, 'Нашел')">
+              Нашел</option>
+            <option data-cat-id="3" class="select-option subcategory-option" (click)="changeSubcategory(3, 'Научить')">
+              Научить</option>
+          </div>
+        </div>
+
+        <button class="search-submit" type="submit" (click)="submitForm()">
+          <span>Поиск</span>
+        </button>
+      </form>
+    </div>
+    <div class="categories-container">
+      <div class="category">
+        <div class="illustration">
+          <div class="circle">
+            <!-- SVG circle begin -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="290" height="290" viewBox="0 0 300 300">
+              <circle id="Ellipse_10" data-name="Ellipse 10" cx="145" cy="145" r="145" fill="#fff" opacity="1" />
+              <path id="Path_149" data-name="Path 149" d="M290, 145 A145,145,0,0,1,0,145C290,145,145,145,290,145Z"
+                fill="rgba(0,0,0,0.06)" />
+            </svg>
+            <!-- SVG circle end -->
+          </div>
+          <div class="icon" id="handshake-icon">
+            <!-- SVG handshake icon begin -->
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px" y="0px" width="183px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
+              xml:space="preserve">
+              <path style="fill:#F29F5C;" d="M418.258,249.103L405.252,143.45l-24.372,3l0.01-0.017l-47.25-26.591
+	c-5.04-2.836-10.824-4.07-16.583-3.538l-74.606,6.9c-9.171,0.848-17.366,6.081-21.993,14.045l-52.584,90.508
+	c-3.883,6.683-0.835,15.254,6.396,17.985l2.151,0.812c4.138,1.563,8.391,2.468,12.642,2.822l-6.663,5.803l-13.33,11.614
+	l-37.913,32.34c-6.749,5.879-7.45,16.109-1.571,22.858l3.846,4.405c7.55,8.658,20.691,9.557,29.365,2.005l14.49,16.62
+	c4.711,5.41,11.613,7.803,18.244,6.987c3.985-0.49,7.873-2.142,11.12-4.982l14.474,16.621c4.728,5.424,11.629,7.801,18.26,6.985
+	c3.985-0.491,7.874-2.127,11.122-4.966l7.866,6.798c7.552,8.673,20.708,9.57,29.382,2.018l10.693-9.329l89.896-70.012l0.097-0.089
+	l35.468-0.035L418.258,249.103z" />
+              <path style="fill:#D37D42;" d="M379.731,267.833l-0.097,0.089l-89.896,70.012l-10.693,9.329c-8.673,7.552-21.83,6.655-29.382-2.018
+	l-7.866-6.798c-3.248,2.839-7.138,4.476-11.122,4.966c-6.631,0.816-13.531-1.561-18.26-6.985l-14.474-16.621
+	c-3.248,2.839-7.136,4.491-11.12,4.982c-6.631,0.816-13.533-1.576-18.244-6.987l-14.49-16.62
+	c-7.426,6.466-18.118,6.718-25.781,1.227c-3.93,5.926-3.616,13.958,1.283,19.582l3.846,4.405c7.55,8.658,20.691,9.557,29.365,2.005
+	l14.49,16.62c4.711,5.41,11.613,7.803,18.244,6.987c3.985-0.49,7.872-2.142,11.12-4.982l14.474,16.622
+	c4.728,5.424,11.629,7.801,18.26,6.985c3.985-0.491,7.874-2.127,11.122-4.966l7.866,6.798c7.552,8.673,20.708,9.57,29.382,2.018
+	l10.693-9.329l89.896-70.012l0.097-0.089l35.468-0.035l-3.924-31.876L379.731,267.833z" />
+              <path style="fill:#F9C295;" d="M396.101,313.533l-48.165-41.53l-13.394-11.54l-9.584-8.254l-41.207-35.52l4.759-40.51
+	c1.61-13.701-7.015-26.528-20.311-30.207l-89.825-24.855c-9.504-2.63-19.549,1.78-24.045,10.557l-11.296,22.05l-48.488-3.291
+	l-12.42,105.724l-5.398,45.945l47.198,3.139l0.098,0.089l98.602,84.993l10.745,9.27c8.715,7.504,21.866,6.534,29.37-2.181
+	l14.38-16.686c3.263,2.821,7.162,4.436,11.15,4.905c6.635,0.78,13.523-1.636,18.221-7.086l14.382-16.701
+	c3.263,2.821,7.16,4.452,11.148,4.92c6.635,0.78,13.524-1.651,18.205-7.088l14.397-16.7c8.715,7.504,21.851,6.532,29.353-2.168
+	l3.822-4.427C403.64,329.601,402.882,319.375,396.101,313.533z" />
+              <g>
+                <path style="fill:#E59F6A;" d="M396.101,313.533l-14.671-12.65c4.768,6.323,4.67,15.318-0.711,21.564l-4.057,4.699
+		c-7.964,9.235-21.908,10.267-31.16,2.301l-15.284,17.728c-4.969,5.771-12.282,8.351-19.326,7.524
+		c-4.233-0.497-8.37-2.228-11.834-5.223l-15.268,17.73c-4.987,5.785-12.298,8.349-19.342,7.522
+		c-4.233-0.497-8.372-2.212-11.836-5.207l-15.266,17.714c-2.876,3.341-6.539,5.592-10.474,6.752l6.499,5.607
+		c8.715,7.504,21.866,6.534,29.37-2.181l14.38-16.686c3.263,2.821,7.162,4.436,11.15,4.905c6.635,0.779,13.523-1.636,18.221-7.086
+		l14.382-16.701c3.263,2.821,7.16,4.452,11.148,4.92c6.635,0.78,13.524-1.651,18.205-7.088l14.397-16.7
+		c8.715,7.504,21.851,6.532,29.353-2.168l3.822-4.427C403.64,329.601,402.882,319.375,396.101,313.533z" />
+                <path style="fill:#E59F6A;" d="M369.5,337.416l-26.392-22.756c-3.135-2.704-7.872-2.354-10.578,0.783
+		c-2.705,3.137-2.354,7.873,0.783,10.578l26.345,22.716l4.966-5.76c1.982,1.707,4.199,2.952,6.52,3.791
+		C372.857,343.719,372.25,339.787,369.5,337.416z" />
+                <path style="fill:#E59F6A;" d="M327.303,365.627c1.807-3.065,1.228-7.074-1.562-9.48l-23.708-20.441
+		c-3.137-2.704-7.872-2.354-10.578,0.783c-2.705,3.137-2.354,7.873,0.783,10.578l23.708,20.441c0.01,0.008,0.02,0.015,0.03,0.023
+		l4.898-5.688C322.827,363.532,325.011,364.785,327.303,365.627z" />
+              </g>
+              <g>
+                <path style="fill:#F29F5C;" d="M126.385,305.135l-5.713,7.544c-6.221,8.215-4.605,19.918,3.61,26.14l0,0
+		c8.215,6.221,19.918,4.605,26.14-3.61l5.713-7.544c6.221-8.215,4.605-19.918-3.61-26.14l0,0
+		C144.31,295.304,132.606,296.92,126.385,305.135z" />
+                <path style="fill:#F29F5C;" d="M161.181,321.002l-10.759,14.207c-6.221,8.215-4.605,19.918,3.61,26.14l0,0
+		c8.215,6.221,19.918,4.605,26.14-3.61l10.759-14.207c6.221-8.215,4.605-19.918-3.61-26.14l0,0
+		C179.105,311.171,167.402,312.787,161.181,321.002z" />
+                <path style="fill:#F29F5C;" d="M194.834,338.377l-14.663,19.362c-6.221,8.215-4.605,19.918,3.61,26.14l0,0
+		c8.215,6.221,19.918,4.605,26.14-3.61l14.663-19.362c6.221-8.215,4.605-19.918-3.61-26.14l0,0
+		C212.759,328.545,201.056,330.162,194.834,338.377z" />
+                <path style="fill:#F29F5C;" d="M225.435,359.783l-15.514,20.485c-6.221,8.215-4.605,19.918,3.61,26.14l0,0
+		c8.215,6.221,19.918,4.605,26.14-3.61l15.514-20.485c6.221-8.215,4.605-19.918-3.61-26.14l0,0
+		C243.359,349.952,231.656,351.568,225.435,359.783z" />
+                <path style="fill:#F29F5C;" d="M380.89,146.433l-47.25-26.591c-5.04-2.836-10.824-4.07-16.583-3.538l-74.606,6.9
+		c-9.171,0.848-17.366,6.081-21.993,14.045l-52.584,90.508c-3.883,6.684-0.835,15.254,6.396,17.985l2.151,0.812
+		c19.275,7.28,41.043,1.085,53.596-15.252l20.147-26.22c0,0,48.429,56.073,101.749-9.41" />
+              </g>
+              <path style="fill:#5C9CEE;" d="M511.945,309.145l-24.713-200.751c-0.243-1.974-1.26-3.771-2.828-4.995
+	c-1.568-1.224-3.557-1.774-5.532-1.532l-57.788,7.114c-15.009,1.848-25.716,15.562-23.868,30.57l19.844,161.2
+	c1.708,13.877,13.559,24.076,27.2,24.076c1.112,0,2.239-0.068,3.37-0.207l57.788-7.114
+	C509.528,316.999,512.451,313.256,511.945,309.145z" />
+              <path style="fill:#3580D3;" d="M511.945,309.145l-2.713-22.036c-1.23,1.805-3.194,3.095-5.532,3.383l-60.577,7.457
+	c-1.186,0.146-2.367,0.217-3.533,0.217c-10.2,0-19.441-5.442-24.553-13.84l2.022,16.424c1.708,13.877,13.559,24.076,27.2,24.076
+	c1.112,0,2.239-0.068,3.37-0.207l57.788-7.114C509.528,316.999,512.451,313.256,511.945,309.145z" />
+              <path style="fill:#ED5575;" d="M90.918,108.98l-57.788-7.114c-1.977-0.243-3.964,0.308-5.532,1.532
+	c-1.568,1.224-2.585,3.021-2.828,4.995L0.057,309.145c-0.506,4.111,2.417,7.854,6.527,8.36l57.788,7.114
+	c1.132,0.139,2.257,0.207,3.37,0.207c13.64,0,25.492-10.2,27.2-24.076l19.844-161.2C116.634,124.542,105.927,110.828,90.918,108.98z
+	" />
+              <path style="fill:#CC3A60;" d="M0.057,309.145l2.713-22.036c1.23,1.805,3.194,3.095,5.532,3.383l60.577,7.457
+	c1.186,0.146,2.367,0.217,3.533,0.217c10.2,0,19.441-5.442,24.553-13.84l-2.022,16.424c-1.708,13.877-13.559,24.076-27.2,24.076
+	c-1.112,0-2.239-0.068-3.37-0.207l-57.788-7.114C2.473,316.999-0.449,313.256,0.057,309.145z" />
+              <g>
+                <circle style="fill:#EBEEF2;" cx="464" cy="277.001" r="14.498" />
+                <circle style="fill:#EBEEF2;" cx="47.19" cy="277.001" r="14.498" />
+              </g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+            </svg>
+            <!-- SVG handshake icon end -->
+          </div>
+        </div>
+        <div class="title">
+          <p>Услуги</p>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="illustration">
+          <div class="circle">
+            <!-- SVG circle begin -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="290" height="290" viewBox="0 0 300 300">
+              <circle id="Ellipse_10" data-name="Ellipse 10" cx="145" cy="145" r="145" fill="#fff" opacity="1" />
+              <path id="Path_149" data-name="Path 149" d="M290, 145 A145,145,0,0,1,0,145C290,145,145,145,290,145Z"
+                fill="rgba(0,0,0,0.06)" />
+            </svg>
+            <!-- SVG circle end -->
+          </div>
+          <div class="icon" id="case-icon">
+            <!-- SVG case icon begin -->
+            <svg id="Layer_1" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <path
+                  d="m336.333 126.4c-8.284 0-15-6.716-15-15v-49.267h-130.666v49.267c0 8.284-6.716 15-15 15s-15-6.716-15-15v-64.267c0-8.284 6.716-15 15-15h160.667c8.284 0 15 6.716 15 15v64.267c-.001 8.284-6.716 15-15.001 15z"
+                  fill="#08475e" />
+                <path
+                  d="m321.333 111.4c0 8.284 6.716 15 15 15s15-6.716 15-15v-64.267c0-8.284-6.716-15-15-15h-80.333v30h65.333z"
+                  fill="#05303d" />
+                <path d="m400.6 96.4h-289.2l-111.4 111.4v160.666l111.4 111.401h289.2l111.4-111.401v-160.666z"
+                  fill="#ff3838" />
+                <path d="m256 96.4v383.467h144.6l111.4-111.401v-160.666l-111.4-111.4z" fill="#c30047" />
+                <path
+                  d="m256 359.367c-8.284 0-15-6.716-15-15v-40.167c0-8.284 6.716-15 15-15 27.166 0 49.267-22.101 49.267-49.267 0-27.209-22.012-49.267-49.267-49.267-27.173 0-49.267 22.094-49.267 49.251 0 8.284-6.716 15.008-15 15.008s-15-6.708-15-14.992v-.016c0-43.699 35.552-79.251 79.25-79.251 43.788 0 79.283 35.401 79.283 79.267 0 38.581-27.707 70.813-64.267 77.844v26.59c.001 8.284-6.715 15-14.999 15z"
+                  fill="#f4f1f1" />
+                <circle clip-rule="evenodd" cx="256" cy="400.6" fill="#f4f1f1" fill-rule="evenodd" r="15" />
+                <path
+                  d="m47.133 96.4c-26.031 0-47.133 21.102-47.133 47.133v64.267h32.133c43.708 0 79.267-35.559 79.267-79.267v-32.133z"
+                  fill="#ff7038" />
+                <path
+                  d="m464.867 96.4c26.031 0 47.133 21.102 47.133 47.133v64.267h-32.133c-43.708 0-79.267-35.559-79.267-79.267v-32.133z"
+                  fill="#ff3838" />
+                <path
+                  d="m47.133 479.867c-26.031 0-47.133-21.103-47.133-47.134v-64.267h32.133c43.708 0 79.267 35.559 79.267 79.267v32.133h-64.267z"
+                  fill="#ff7038" />
+                <path
+                  d="m464.867 479.867c26.031 0 47.133-21.102 47.133-47.133v-64.267h-32.133c-43.708 0-79.267 35.559-79.267 79.267v32.133z"
+                  fill="#ff3838" />
+                <g fill="#e7dfdd">
+                  <path
+                    d="m256 160.667v30c27.255 0 49.267 22.058 49.267 49.267 0 27.166-22.101 49.267-49.267 49.267v70.167c8.284 0 15-6.716 15-15v-26.59c36.56-7.031 64.267-39.263 64.267-77.844 0-43.861-35.487-79.258-79.267-79.267z" />
+                  <path clip-rule="evenodd" d="m271 400.6c0-8.279-6.721-15-15-15v30c8.279 0 15-6.722 15-15z"
+                    fill-rule="evenodd" />
+                </g>
+              </g>
+            </svg>
+            <!-- SVG case icon end -->
+          </div>
+        </div>
+        <div class="title">
+          <p>Потеряно и найдено</p>
+        </div>
+      </div>
+      <div class="category">
+        <div class="illustration">
+          <div class="circle">
+            <!-- SVG circle begin -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="290" height="290" viewBox="0 0 300 300">
+              <circle id="Ellipse_10" data-name="Ellipse 10" cx="145" cy="145" r="145" fill="#fff" opacity="1" />
+              <path id="Path_149" data-name="Path 149" d="M290, 145 A145,145,0,0,1,0,145C290,145,145,145,290,145Z"
+                fill="rgba(0,0,0,0.06)" />
+            </svg>
+            <!-- SVG circle end -->
+          </div>
+          <div class="icon" id="books-icon">
+            <!-- SVG books icon begin -->
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+              y="0px" viewBox="0 0 600 600" xml:space="preserve">
+              <path style="fill:#878493;" d="M504,443.5H32v-216c0-4.418-3.582-8-8-8H8c-4.418,0-8,3.582-8,8v240c0,4.418,3.582,8,8,8h496
+	c4.418,0,8-3.582,8-8v-16C512,447.082,508.418,443.5,504,443.5z" />
+              <path style="fill:#AD7DC9;" d="M104,91.5H40c-4.418,0-8,3.582-8,8v336c0,4.418,3.582,8,8,8h64c4.418,0,8-3.582,8-8v-336
+	C112,95.082,108.418,91.5,104,91.5z" />
+              <path style="fill:#8A6CBD;" d="M48,435.5v-336c0-4.418,3.582-8,8-8H40c-4.418,0-8,3.582-8,8v336c0,4.418,3.582,8,8,8h16
+	C51.582,443.5,48,439.918,48,435.5z" />
+              <g>
+                <rect x="32" y="139.5" style="fill:#FCDE76;" width="80" height="24" />
+                <rect x="32" y="307.5" style="fill:#FCDE76;" width="80" height="24" />
+                <rect x="32" y="355.5" style="fill:#FCDE76;" width="80" height="24" />
+              </g>
+              <g>
+                <rect x="32" y="139.5" style="fill:#FCCF6F;" width="16" height="24" />
+                <rect x="32" y="307.5" style="fill:#FCCF6F;" width="16" height="24" />
+                <rect x="32" y="355.5" style="fill:#FCCF6F;" width="16" height="24" />
+              </g>
+              <path style="fill:#696578;" d="M376,147.5c-4.418,0-8-3.582-8-8V54.923c0-4.418,3.582-8,8-8s8,3.582,8,8V139.5
+	C384,143.918,380.418,147.5,376,147.5z" />
+              <path style="fill:#00B5B8;" d="M432.486,67.493c-5.709-9.865-16.325-15.993-27.705-15.993s-21.996,6.128-27.705,15.993
+	c-1.435,2.479-1.435,5.536,0,8.015c5.709,9.865,16.325,15.993,27.705,15.993s21.996-6.128,27.705-15.993
+	C433.921,73.028,433.921,69.972,432.486,67.493z" />
+              <path style="fill:#E6608D;" d="M430.485,116.048c-11.625-5.984-30.273-9.534-54.485,5.808
+	c-24.212-15.341-42.859-11.791-54.485-5.808C294.26,130.074,280,170.659,280,203.5c0,24.632,11.231,45.566,32.48,60.54
+	c17.551,12.367,40.703,19.46,63.52,19.46s45.969-7.093,63.52-19.46C460.769,249.066,472,228.132,472,203.5
+	C472,170.659,457.74,130.074,430.485,116.048z" />
+              <path style="fill:#D4506F;" d="M392,272.068c-22.817,0-45.969-7.093-63.52-19.46C307.231,237.634,296,216.7,296,192.068
+	c0-26.704,9.429-58.527,27.606-77.029c-0.719,0.327-1.418,0.664-2.091,1.01C294.26,130.074,280,170.659,280,203.5
+	c0,24.632,11.231,45.566,32.48,60.54c17.551,12.367,40.703,19.46,63.52,19.46s45.969-7.093,63.52-19.46
+	c2.906-2.048,5.618-4.212,8.147-6.477C431.354,266.842,411.56,272.068,392,272.068z" />
+              <path style="fill:#FCDE76;" d="M235.245,424.367l-48.83-380.883c-0.562-4.383-4.577-7.483-8.952-6.918l-63.48,8.138
+	c-2.104,0.27-4.016,1.365-5.313,3.043s-1.875,3.804-1.605,5.909l48.83,380.883c0.518,4.038,3.959,6.984,7.925,6.984
+	c0.339,0,0.683-0.021,1.027-0.066l63.48-8.138c2.104-0.27,4.016-1.365,5.313-3.043S235.515,426.472,235.245,424.367z" />
+              <g>
+                <rect x="140.325" y="294.428" transform="matrix(-0.9919 0.1272 -0.1272 -0.9919 398.6732 595.3982)"
+                  style="fill:#F2821C;" width="80.002" height="32.001" />
+                <path style="fill:#F2821C;" d="M194.554,106.965l-8.138-63.48c-0.562-4.383-4.577-7.483-8.952-6.918l-63.48,8.138
+		c-2.104,0.27-4.016,1.365-5.313,3.043s-1.875,3.804-1.605,5.909l8.138,63.481L194.554,106.965z" />
+                <polygon style="fill:#F2821C;"
+                  points="215.839,272.991 197.606,130.77 118.255,140.943 135.549,275.839 214.9,265.666 	" />
+                <path style="fill:#F2821C;" d="M235.245,424.367l-10.173-79.351l-79.351,10.173l10.173,79.35c0.518,4.038,3.959,6.984,7.925,6.984
+		c0.339,0,0.683-0.021,1.027-0.066l63.48-8.138c2.104-0.27,4.016-1.365,5.313-3.043S235.515,426.472,235.245,424.367z" />
+              </g>
+              <path style="fill:#FCCF6F;" d="M113.983,44.705c-2.104,0.27-4.016,1.365-5.313,3.043s-1.875,3.804-1.605,5.909l48.83,380.883
+	c0.518,4.038,3.959,6.984,7.925,6.984c0.339,0,0.683-0.021,1.027-0.066l12.634-1.62L124.159,43.4L113.983,44.705z" />
+              <g>
+                <polygon style="fill:#E57712;"
+                  points="138.601,299.644 142.67,331.384 162.551,328.835 158.285,297.12 	" />
+                <path style="fill:#E57712;" d="M113.983,44.705c-2.104,0.27-4.016,1.365-5.313,3.043s-1.875,3.804-1.605,5.909l8.138,63.481
+		l18.554-2.379L124.159,43.4L113.983,44.705z" />
+                <polygon style="fill:#E57712;"
+                  points="118.255,140.943 135.549,275.839 155.086,273.334 136.956,138.545 	" />
+                <path style="fill:#E57712;" d="M145.722,355.189l10.173,79.35c0.518,4.038,3.959,6.984,7.925,6.984
+		c0.339,0,0.683-0.021,1.027-0.066l12.634-1.62l-11.731-87.216L145.722,355.189z" />
+              </g>
+              <path style="fill:#FCDE76;" d="M504,307.5c4.418,0,8-3.582,8-8v-8c0-4.418-3.582-8-8-8H256c-8.822,0-16,7.178-16,16v128
+	c0,8.822,7.178,16,16,16h248c4.418,0,8-3.582,8-8v-8c0-4.418-3.582-8-8-8h-80v-112H504z" />
+              <path style="fill:#F0F0F1;" d="M480,307.5H272c-4.418,0-8,3.582-8,8v96c0,4.418,3.582,8,8,8h208c4.418,0,8-3.582,8-8v-96
+	C488,311.082,484.418,307.5,480,307.5z" />
+              <path style="fill:#E1E0E4;" d="M280,315.5h208c0-4.418-3.582-8-8-8H272c-4.418,0-8,3.582-8,8v96c0,4.418,3.582,8,8,8v-96
+	C272,319.082,275.582,315.5,280,315.5z" />
+              <g>
+                <rect x="264" y="331.5" style="fill:#B4B2BB;" width="224" height="16" />
+                <rect x="264" y="379.5" style="fill:#B4B2BB;" width="224" height="16" />
+              </g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+            </svg>
+
+            <!-- SVG handshake end -->
+          </div>
+        </div>
+        <div class="title">
+          <p>Учеба</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="top-ads">
+    <div class="bg desktop">
+      <!-- SVG background line begin -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1923.887 959.717">
+        <path id="Path_174" data-name="Path 174"
+          d="M-.5-575.463S125.874-118.3,454.236-86.589,1074.254-223.463,1437-210.769s482.5,594.087,482.5,594.087"
+          transform="translate(2.428 575.995)" fill="none" stroke="#b5e5ff8d" stroke-width="5" />
+      </svg>
+      <!-- SVG background line end -->
+
+
+    </div>
+    <h1 class="large-heading">Последние объявления</h1>
+
+    <div class="ads-container">
+      <div class="lost">
+        <h3 class="small-heading">Потеряно</h3>
+        <div class="ads-card-container">
+          <div class="ads-card" data-id="{{ ad.id }}" *ngFor="let ad of lastAds.lost">
+            <div class="ads-card-header" (click)="showAd(ad.id, 'lost')">
+              <h3 class="ads-card-title">{{ ad.title }}</h3>
+              <div class="triangle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="23.81" height="14.102" viewBox="0 0 23.81 14.102">
+                  <g id="dropdown-btn" data-name=" dropdown-btn" transform="translate(1.09 1.09)">
+                    <path id="Path_151" data-name="Path 151" d="M.452,0,0,15.961"
+                      transform="translate(21.31 0.001) rotate(45)" fill="none" stroke="#868686" stroke-width="3" />
+                    <path id="Path_152" data-name="Path 152" d="M.454,16.407,0,0"
+                      transform="translate(11.923 11.602) rotate(135)" fill="none" stroke="#868686" stroke-width="3" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="ads-card-body">
+              <img class="ads-card-image" src="https://picsum.photos/200" alt="картинка объявления">
+              <div class="ads-card-description">
+                <p class="ads-card-field-name">Дата:</p>
+                <p class="ads-card-field-data">{{ ad.date.start + "-" + ad.date.end }}</p>
+                <p class="ads-card-field-name">Описание:</p>
+                <p class="ads-card-field-data">{{ ad.description }}</p>
+
+
+                <a class="ads-card-contact" href="/">Написать</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="found">
+        <h3 class="small-heading">Найдено</h3>
+        <div class="ads-card-container">
+          <div class="ads-card" data-id="{{ ad.id }}" *ngFor="let ad of lastAds.found">
+            <div class="ads-card-header" (click)="showAd(ad.id, 'found')">
+              <h3 class="ads-card-title">{{ ad.title }}</h3>
+              <div class="triangle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="23.81" height="14.102" viewBox="0 0 23.81 14.102">
+                  <g id="dropdown-btn" data-name=" dropdown-btn" transform="translate(1.09 1.09)">
+                    <path id="Path_151" data-name="Path 151" d="M.452,0,0,15.961"
+                      transform="translate(21.31 0.001) rotate(45)" fill="none" stroke="#868686" stroke-width="3" />
+                    <path id="Path_152" data-name="Path 152" d="M.454,16.407,0,0"
+                      transform="translate(11.923 11.602) rotate(135)" fill="none" stroke="#868686" stroke-width="3" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="ads-card-body">
+              <img class="ads-card-image" src="https://picsum.photos/200" alt="картинка объявления">
+              <div class="ads-card-description">
+                <p class="ads-card-field-name">Дата:</p>
+                <p class="ads-card-field-data">{{ ad.date.start + "-" + ad.date.end }}</p>
+                <p class="ads-card-field-name">Описание:</p>
+                <p class="ads-card-field-data">{{ ad.description }}</p>
+
+
+                <a class="ads-card-contact" href="/">Написать</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <a href="" class="all-ads-btn">
+      <span>Все объявления</span>
+      <!-- SVG arrow begin -->
+      <svg class="arrow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 492.004 492.004"
+        style="enable-background:new 0 0 492.004 492.004;" xml:space="preserve">
+        <g>
+          <g>
+            <path d="M484.14,226.886L306.46,49.202c-5.072-5.072-11.832-7.856-19.04-7.856c-7.216,0-13.972,2.788-19.044,7.856l-16.132,16.136
+			c-5.068,5.064-7.86,11.828-7.86,19.04c0,7.208,2.792,14.2,7.86,19.264L355.9,207.526H26.58C11.732,207.526,0,219.15,0,234.002
+			v22.812c0,14.852,11.732,27.648,26.58,27.648h330.496L252.248,388.926c-5.068,5.072-7.86,11.652-7.86,18.864
+			c0,7.204,2.792,13.88,7.86,18.948l16.132,16.084c5.072,5.072,11.828,7.836,19.044,7.836c7.208,0,13.968-2.8,19.04-7.872
+			l177.68-177.68c5.084-5.088,7.88-11.88,7.86-19.1C492.02,238.762,489.228,231.966,484.14,226.886z" />
+          </g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+      </svg>
+      <!-- SVG arrow end -->
+
+    </a>
+  </section>
+
+  <section class="top-teachers">
+    <div class="bg"></div>
+    <h1 class="large-heading">Лучшие преподаватели</h1>
+    <div class="teachers-card-container">
+      <div class="teacher-card" *ngFor="let teacher of bestTeachers">
+        <div class="card-header">
+          <img class="avatar" [src]="teacher.avatar" alt="аватар">
+          <div class="name">
+            <a href="#">{{ teacher.name.first }}</a>
+            <a href="#">{{ teacher.name.last }}</a>
+          </div>
+          <p class="rating">{{ teacher.rating }}</p>
+        </div>
+        <div class="card-body">
+          <div class="card-info">
+            <p class="card-field-name">Факультет:</p>
+            <p class="card-field-data">{{ teacher.faculty }}</p>
+            <p class="card-field-name">Курс:</p>
+            <p class="card-field-data">{{ teacher.yearOfStudy }}</p>
+            <p class="card-field-name">Преподает:</p>
+            <p class="card-field-data">{{ teacher.subjects }}</p>
+            <p class="teacher-quote">{{ teacher.quote }}</p>
+          </div>
+
+          <a href="#" class="profile-btn">Профиль</a>
+          <a href="#" class="contact-btn">Написать</a>
+        </div>
+
+      </div>
+    </div>
+    <a href="" class="all-ads-btn">
+      <span>Все преподаватели</span>
+      <!-- SVG arrow begin -->
+      <svg class="arrow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 492.004 492.004"
+        style="enable-background:new 0 0 492.004 492.004;" xml:space="preserve">
+        <g>
+          <g>
+            <path d="M484.14,226.886L306.46,49.202c-5.072-5.072-11.832-7.856-19.04-7.856c-7.216,0-13.972,2.788-19.044,7.856l-16.132,16.136
+			c-5.068,5.064-7.86,11.828-7.86,19.04c0,7.208,2.792,14.2,7.86,19.264L355.9,207.526H26.58C11.732,207.526,0,219.15,0,234.002
+			v22.812c0,14.852,11.732,27.648,26.58,27.648h330.496L252.248,388.926c-5.068,5.072-7.86,11.652-7.86,18.864
+			c0,7.204,2.792,13.88,7.86,18.948l16.132,16.084c5.072,5.072,11.828,7.836,19.044,7.836c7.208,0,13.968-2.8,19.04-7.872
+			l177.68-177.68c5.084-5.088,7.88-11.88,7.86-19.1C492.02,238.762,489.228,231.966,484.14,226.886z" />
+          </g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+        <g>
+        </g>
+      </svg>
+      <!-- SVG arrow end -->
+
+
+    </a>
+  </section>
+
+  <section class="contact">
+    <h2 class="medium-heading">Есть вопросы или предложения?</h2>
+    <h2 class="medium-heading">Напишите нам!</h2>
+
+  </section>
+
+</main>
