@@ -1,0 +1,42 @@
+#footer {
+  box-sizing: border-box;
+  width: available;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: .5em;
+  border-top: #c6c6c6 solid 1px;
+  margin: 10px 20%;
+  color: #767676;
+}
+
+.footerenok {
+  width: available;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  padding: 10px;
+  margin: 10px 3%;
+}
+
+.border-right {
+  border: #333333;
+}
+
+.footerenok ul {
+  list-style: none;
+}
+
+.footerenok h1 {
+  text-align: center;
+}
+
+h3 {
+  display: inline;
+}
+
+.footerenok a {
+  text-decoration: none;
+  color: inherit;
+}

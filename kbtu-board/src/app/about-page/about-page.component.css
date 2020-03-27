@@ -1,26 +1,51 @@
-.x-page_bg_white {
-    padding-top: 60px;
-    background: #fff;
+.container
+{
+    display: flex;
+    justify-content: center;
+    height: 550px;
+    align-items:center;
+    background-color:#ffff;
+    padding: 20px;
 }
 
-.x-page {
-    display: block;
-    width: 100%;
+.Title{
+    font-size: 25px;
 }
-.x-page__content {
-    width: 1200px;
-    margin: 0 auto;
-    padding: 30px 20px;
-    color: #333;
+.MainDes{
+    font-size: 22px;
+    margin-bottom: 50px;
 }
-.x-about-page__layout {
-    display: table;
-    width: 100%;
-    box-sizing: border-box;
-    table-layout: fixed;
-    background: #fff;
+.Payment{
+    font-size: 18px;
+
 }
-.x-about-page__layout-item {
-    display: table-cell;
-    vertical-align: top;
+.containerS
+{
+    display: flex;
+    justify-content: flex-start;
+    height: 150px;
+    align-items:center;
+    color:#ffff;
+    padding: 30px;
+    padding-left: 150px;
+}
+.containerB
+{
+    display: flex;
+    justify-content:center;
+    height: 350px;
+    align-items:center;
+    color:#ffff;
+    
+    padding: 30px;
+    padding-left: 150px;
+}
+.containerC{
+    display: flex;
+    justify-content:flex-start;
+    height: 850px;
+    align-items:center;
+    background-color:#ffff;
+    
+    padding-left: 150px;  
 }
