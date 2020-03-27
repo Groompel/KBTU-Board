@@ -1,5 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
+    --color-primary: #53C46D;
+    --color-accent: #F5F555;
+    --color-black: #121212;
+    --border-btn-radius: 0.3rem;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Montserrat', serif;
+  }
+  
+  section {
+    padding: 0 120px;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  button:hover {
+    cursor: pointer;
+  }
+=======
   --color-primary: #53C46D;
   --color-accent: #F5F555;
   --color-black: #121212;
