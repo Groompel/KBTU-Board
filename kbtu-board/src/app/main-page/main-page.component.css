@@ -4,6 +4,7 @@
 /* Header Section */
 
 .header {
+  min-height: 90vh;
   padding-bottom: 5%;
 }
 
@@ -17,7 +18,6 @@
 
 .header .bg {
   top: -91px;
-  min-height: 100vh;
   height: 110%;
   background-color: var(--color-primary);
   background: linear-gradient(to bottom, var(--color-primary) 0%, var(--color-primary-light) 50%, #08A06C 98%);
@@ -117,7 +117,7 @@ form.searchbar .query::placeholder {
   background-color: white;
   position: absolute;
   top: 100%;
-  width: 100%;
+  width: 100.2%;
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.295);
   display: none;
   z-index: 1;
@@ -356,9 +356,10 @@ form.searchbar .query::placeholder {
   background-color: var(--color-accent);
   color: var(--color-black);
   border-radius: var(--border-btn-radius);
+  border: 1px solid var(--color-accent);
   font-size: 28.5px;
   padding: 10px 0;
-  width: 375px;
+  width: 450px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -384,8 +385,8 @@ form.searchbar .query::placeholder {
 /* Top Teachers section */
 
 .top-teachers {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 40px;
+  padding-bottom: 50px;
   background-color: var(--color-primary);
   background: linear-gradient(to bottom, var(--color-primary) 0%, var(--color-primary-light) 50%, #08A06C 99%);
   text-align: center;
@@ -398,6 +399,7 @@ form.searchbar .query::placeholder {
 
 .teachers-card-container {
   margin-top: 30px;
+  padding-bottom: 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -405,34 +407,47 @@ form.searchbar .query::placeholder {
 }
 
 .teacher-card {
-  background: linear-gradient(to bottom, #ffffff 0%, #f2f2f2 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #e2e2e2 100%);
   border-radius: 43.5px;
   flex: 0 0 360px;
-  height: 470px;
-  padding: 20px 15px;
+  height: 530px;
+  padding: 20px 20px;
   text-align: left;
   margin-bottom: 30px;
+  position: relative;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.281);
 }
 
 .teacher-card:not(:last-child):not(:first-child) {
-  margin: 0 30px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .teacher-card .card-header {
   display: grid;
   grid-template-columns: 100px 1fr;
-  grid-template-rows: 70% 30%;
+  grid-template-rows: 60% 40%;
   grid-column-gap: 10px;
   grid-template-areas:
     "avatar name"
     "avatar rating";
 }
 
-.teacher-card .card-header .avatar {
+
+
+.teacher-card .card-header .avatar-cover {
   border-radius: 50%;
   width: 100px;
   height: 100px;
   grid-area: avatar;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-cover .avatar {
+  width: 100%;
 }
 
 .teacher-card .card-header .name {
@@ -443,12 +458,39 @@ form.searchbar .query::placeholder {
   color: var(--color-black);
   display: block;
   font-size: 25px;
+  text-decoration: none;
+  font-weight: 600;
+
+}
+
+.teacher-card .card-header .name a:hover {
+  text-decoration: underline;
 }
 
 .teacher-card .card-header .rating {
   grid-area: rating;
 
 }
+.rating .number {
+  font-size: 14px;
+  color: var(--color-medium-gray);
+}
+
+
+.star-line {
+  width: 100%;
+  height: 40%;
+  display: flex;
+}
+.star-container {
+  position: relative;
+}
+
+.star-container .star {
+    width: 20px;
+    fill: #d4d4d4;
+}
+
 
 .top-teachers .all-ads-btn {
   width: 430px;
@@ -459,4 +501,145 @@ form.searchbar .query::placeholder {
 
 .top-teachers .all-ads-btn .arrow {
   fill: var(--color-accent);
+}
+
+.top-teachers .card-body {
+  padding: 10px 0;
+  line-height: 25px;
+}
+
+.top-teachers .card-info {
+  height: 140px;
+}
+
+.top-teachers .card-field-name {
+  font-size: 16px;
+  font-weight: 600;
+  height: 60%;
+  overflow: hidden;
+}
+
+.data-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-teachers .card-field-data {
+  line-height: 20px;
+
+}
+
+.teacher-quote {
+  margin: 10px 0 30px;
+  padding: 0 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  font-family: 'Pangolin', cursive;
+  font-family: 'Merriweather', serif;
+  height: 150px;
+  border-top: 1px solid var(--color-light-gray);
+  border-bottom: 1px solid var(--color-light-gray);
+}
+.teacher-quote .text {
+  margin: 0 20px;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--color-black);
+}
+
+
+.quote {
+  width: 25px;
+  fill: rgb(134, 134, 134);
+  position: absolute;
+}
+
+.upper-quote {
+  left: 0;
+  top: -10px;
+}
+
+.lower-quote {
+  right: 0;
+  bottom: -10px;
+  transform: rotate(180deg);
+}
+
+.teacher-card .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 320px;
+  position: absolute;
+  bottom: 25px;
+  left: 20px;
+}
+
+.top-teachers .profile-btn, .top-teachers .contact-btn {
+  text-decoration: none;
+  display: inline-block;
+  width: 160px;
+  text-align: center;
+  border-radius: var(--border-btn-radius);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  justify-content: center;
+  transition: all 0.2s ease-out;
+}
+
+.top-teachers .profile-btn svg, .top-teachers .contact-btn svg {
+  width: 25px;
+  transition: 0.2s ease-out;
+  margin-right: 5px;
+}
+
+.top-teachers .profile-btn {
+  border: 2px solid var(--color-dark-gray);
+  color: var(--color-dark-gray);
+}
+
+.top-teachers .profile-btn:hover {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+  color: #f9f9f9;
+}
+
+.top-teachers .profile-btn:hover svg {
+  fill: #f9f9f9;
+}
+
+.top-teachers .contact-btn {
+  border: 2px solid #009fee;
+  /* background: linear-gradient(to bottom, #009fee 0%, #0096e0 100%); */
+  color: #0088cc;
+}
+
+.top-teachers .contact-btn svg {
+  fill: #0088cc;
+}
+
+.top-teachers .contact-btn:hover {
+  background-color: #009fee;
+  color: #fff;
+}
+
+.top-teachers .contact-btn:hover svg {
+  fill: #fff;
+}
+
+
+/* Contact section */
+
+.contact {
+  text-align: center;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
