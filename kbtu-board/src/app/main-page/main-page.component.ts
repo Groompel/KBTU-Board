@@ -1,11 +1,13 @@
 import {Component, OnInit, ViewEncapsulation, AfterViewInit} from '@angular/core';
 import { ApiService } from '../api.service';
 declare const changeSubcategories: any;
-declare const init: any;
+declare const initMainPage: any;
 declare const showCategoryWindow: any;
 declare const showSubcategoryWindow: any;
 declare const searchSubmitCheck: any;
 declare const showAd: any;
+declare const removeBgFromNavbar: any;
+
 @Component({
   selector: 'app-main-page',
   encapsulation: ViewEncapsulation.None,
@@ -63,8 +65,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   getArray(n) {
     n = parseInt(n);
-    console.log(Array(n).fill(0,0,n));
-
     return Array(n).fill(0,0,n);
   }
 
@@ -107,7 +107,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   ) {
   }
   ngAfterViewInit(): void {
-    init();
+    initMainPage();
+    removeBgFromNavbar();
   }
 
   ngOnInit(): void {

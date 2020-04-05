@@ -1,51 +1,47 @@
-.container
-{
-    display: flex;
-    justify-content: center;
-    height: 550px;
-    align-items:center;
-    background-color:#ffff;
-    padding: 20px;
+.container {
+  display: flex;
+  justify-content: center;
+  height: 550px;
+  align-items: center;
+  background-color: #ffff;
+  padding: 20px;
+  overflow: hidden;
 }
 
-.Title{
-    font-size: 25px;
+.Title {
+  font-size: 25px;
 }
-.MainDes{
-    font-size: 22px;
-    margin-bottom: 50px;
+.MainDes {
+  font-size: 22px;
+  margin-bottom: 50px;
 }
-.Payment{
-    font-size: 18px;
+.Payment {
+  font-size: 18px;
+}
+.containerS {
+  display: flex;
+  justify-content: flex-start;
+  height: 150px;
+  align-items: center;
+  color: #ffff;
+  padding: 30px;
+  padding-left: 150px;
+}
+.containerB {
+  display: flex;
+  justify-content: center;
+  height: 350px;
+  align-items: center;
+  color: #ffff;
 
+  padding: 30px;
+  padding-left: 150px;
 }
-.containerS
-{
-    display: flex;
-    justify-content: flex-start;
-    height: 150px;
-    align-items:center;
-    color:#ffff;
-    padding: 30px;
-    padding-left: 150px;
-}
-.containerB
-{
-    display: flex;
-    justify-content:center;
-    height: 350px;
-    align-items:center;
-    color:#ffff;
-    
-    padding: 30px;
-    padding-left: 150px;
-}
-.containerC{
-    display: flex;
-    justify-content:flex-start;
-    height: 850px;
-    align-items:center;
-    background-color:#ffff;
-    
-    padding-left: 150px;  
+.containerC {
+  display: flex;
+  justify-content: flex-start;
+  height: 850px;
+  align-items: center;
+  background-color: #ffff;
+  padding-left: 150px;
 }

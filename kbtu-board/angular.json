@@ -28,7 +28,7 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "src/assets/scripts/main-page.js"
+              "src/assets/scripts/main.js"
             ]
           },
           "configurations": {

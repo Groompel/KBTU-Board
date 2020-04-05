@@ -1,48 +1,226 @@
+<div class="page-container">
+  <div class="auth-container-outer">
+    <div class="auth-container-inner">
+      <div class="tabs">
+        <div class="tab active-tab login-tab" (click)="changeTab('get', 'login', 'Вход')">
+          <div class="tab-name">Вход</div>
+          <span class="line"></span>
+        </div>
+        <div class="tab register-tab" (click)="changeTab('get', 'register', 'Зарегистрироваться')">
+          <div class="tab-name">Регистрация</div>
+          <span class="line"></span>
+        </div>
+      </div>
+      <div class="form-container">
+        <form class="auth-form" action="/auth/{{ action.name }}" [method]="action.method" novalidate>
 
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-form-title" style="background-image: url(images/bg-01.jpg);">
-					<span class="login100-form-title-1">
-						Sign In
-					</span>
-				</div>
+          <div class="input-form register login response-error">
+            Данное имя пользователя уже занято! Попробуйте другое.
+          </div>
 
-				<form class="login100-form validate-form">
-					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-						<span class="label-input100">Username</span>
-						<input class="input100" type="text" name="username" placeholder="Enter username">
-						<span class="focus-input100"></span>
-					</div>
+          <div class="input-form register">
+            <input name="name" type="text" autocomplete="off" required>
+            <label for="name">
+              <span>Ваше имя</span>
+            </label>
+            <div class="error"></div>
+          </div>
 
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
-						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="pass" placeholder="Enter password">
-						<span class="focus-input100"></span>
-					</div>
+          <div class="input-form register login">
+            <input class="login" name="username" type="text" autocomplete="off" required (input)="checkUsername($event.target.value.trim())">
+            <label for="username">
+              <span>Имя пользователя</span>
+            </label>
+            <div class="error"></div>
 
-					<div class="flex-sb-m w-full p-b-30">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">
-								Remember me
-							</label>
-						</div>
+          </div>
 
-						<div>
-							<a href="#" class="txt1">
-								Forgot Password?
-							</a>
-						</div>
-					</div>
+          <div class="input-form register login">
+            <input class="login" name="password" type="password" autocomplete="off" required>
+            <label for="password">
+              <span>Пароль</span>
+            </label>
+            <div class="error"></div>
 
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	
+          </div>
+
+          <div class="input-form register">
+            <input type="password" autocomplete="off" required>
+            <label for="password-repeat">
+              <span>Повторите пароль</span>
+            </label>
+            <div class="error"></div>
+          </div>
+
+          <div class="telegram-verification input-form register">
+            <div class="text">
+              <h4>Подтверждение через Telegram.</h4>
+              <div>Для подтверждения аккаунта, а так же в случае, если Вы забудете пароль, требуется верификация через
+                мессенджер Telegram.
+                Если у Вас его нет, то можете <a href="https://web.telegram.org/#/login" target="_blank">cоздать аккаунт
+                  здесь</a> или скачать приложение для
+                <a href="https://play.google.com/store/apps/details?id=org.telegram.messenger" target="_blank">Android</a>
+                или
+                <a href="https://apps.apple.com/ru/app/telegram-messenger/id686449807" target="_blank">IOS</a>.
+                <br>
+                Для подтверждения перейдите по <a class="bot-link" [href]="telegramBotLink"
+                  target="_blank">ссылке</a>
+                на наш Telegram бот и отправьте ему данный код:
+
+                <div class="code-container">
+                  <div class="code" (click)="copyCodeToClipboard()">
+                    <div class="copied">
+                      <div class="triangle-pin">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                          viewBox="0 0 80 80">
+                          <defs>
+                            <path d="M0 40 L40 0 L80 40 Z"></path>
+                          </defs>
+                          <g>
+                            <g>
+                              <g>
+                                <use xlink:href="#asm73wOZA"></use>
+                                <g>
+                                  <use xlink:href="#asm73wOZA"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                      Скопировано
+                    </div>
+                    <span>{{ code.code }}</span>
+                  </div>.
+                  <div class="hint">(намжите, чтобы скопировать)</div>
+                </div>
+              </div>
+              <div class="code-control">
+                <div class="code-timer"  ng-app ng-controller="codeTimer">
+                  <span>
+                    {{ codeExpireDiff }}
+                  </span>
+                </div>
+              </div>
+              <ol class="actions">
+                <li>Отправьте <a [href]="telegramBotLink" target="_blank">боту</a> команду <span class="command">/start</span> или нажмите на кнопку "Старт" в нижней
+                  части окна.</li>
+                <li>Отправьте команду <span class="command">/validate <span class="code">{{ code.code }}</span></span>.</li>
+                <li>Нажмите на кнопку "Проверить".</li>
+              </ol>
+            </div>
+            <button class="check-btn" type="button" (click)="checkTelegramCode()">
+              <!-- SVG tik icon begin -->
+              <svg [style.display]="response.valid ? 'block' : 'none'" class="tik-icon" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M383.841,171.838c-7.881-8.31-21.02-8.676-29.343-0.775L221.987,296.732l-63.204-64.893
+			c-8.005-8.213-21.13-8.393-29.35-0.387c-8.213,7.998-8.386,21.137-0.388,29.35l77.492,79.561
+			c4.061,4.172,9.458,6.275,14.869,6.275c5.134,0,10.268-1.896,14.288-5.694l147.373-139.762
+			C391.383,193.294,391.735,180.155,383.841,171.838z" />
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <path d="M256,0C114.84,0,0,114.84,0,256s114.84,256,256,256s256-114.84,256-256S397.16,0,256,0z M256,470.487
+			c-118.265,0-214.487-96.214-214.487-214.487c0-118.265,96.221-214.487,214.487-214.487c118.272,0,214.487,96.221,214.487,214.487
+			C470.487,374.272,374.272,470.487,256,470.487z" />
+                  </g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+              </svg>
+              <!-- SVG tik icon end -->
+
+              <!-- SVG loading icon begin -->
+              <svg [style.display]="response.waitingForResponse ? 'block' : 'none'" class="loading-icon" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 95.396 95.396"
+                style="enable-background:new 0 0 95.396 95.396;" xml:space="preserve">
+                <g>
+                  <path d="M59.258,31.609c-0.366,0.602-0.178,1.374,0.404,1.725c0.027,0.014,0.048,0.031,0.062,0.038L80.64,46.064L95.211,24.46
+		c0.273-0.438,0.24-1.002-0.075-1.404c-0.273-0.402-0.801-0.592-1.286-0.466l-10.404,2.606l-0.533,0.134
+		C74.948,11.646,60.422,3.214,44.486,3.214C19.956,3.214,0,23.172,0,47.698s19.956,44.484,44.486,44.484
+		c18.478,0,35.229-11.628,41.687-28.938c1.242-3.333-0.451-7.05-3.792-8.295c-3.34-1.246-7.053,0.451-8.295,3.791
+		c-4.579,12.293-16.478,20.551-29.6,20.551c-17.428,0-31.595-14.172-31.595-31.59c0-17.42,14.167-31.591,31.595-31.591
+		c10.032,0,19.282,4.712,25.192,12.552l-9.329,2.344C59.911,31,59.497,31.217,59.258,31.609z" />
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+              </svg>
+              <!-- SVG loading icon end -->
+
+              Проверить
+            </button>
+
+            <div class="response-info" [style.display]="showCodeProcess ? 'block' : 'none'">
+              {{ response.message }}
+              <span class="response-username">{{ response.usernameOrId }}</span>
+            </div>
+          </div>
+
+
+
+          <button class="submit-btn" type="submit" (click)="authFormSubmitCheck()">{{ action.buttonName }}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+declare const showProfileWindow: any;
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,10 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  profileWindowVisible = false;
+  profileWindowVisible = true;
 
   toggleProfileWindow() {
-    this.profileWindowVisible = !this.profileWindowVisible;
+    showProfileWindow();
   }
 
   constructor() {

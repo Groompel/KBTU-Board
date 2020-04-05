@@ -170,3 +170,7 @@ export const BEST_TEACHERS = [
 
   },
 ];
+
+  export const AUTH_DATA = {
+
+}
