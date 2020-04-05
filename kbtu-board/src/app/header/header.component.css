@@ -7,8 +7,8 @@
 nav {
   position: relative;
   display: flex;
-  height: 90px;
   align-items: center;
+  height: 90px;
   letter-spacing: 1px;
   color: #fff;
 }
@@ -17,34 +17,44 @@ nav {
   font-size: 37.5px;
   font-weight: 700;
   text-transform: uppercase;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo br {
+  display: none;
 }
 
 .nav-items {
   list-style: none;
-  display: flex;
   margin-left: auto;
+  display: flex;
   align-items: center;
 }
 
-.cta-btn {
-  background: transparent;
+.btn-container {
   border: 2px solid var(--color-accent);
   border-radius: var(--border-btn-radius);
   color: var(--color-accent);
-  padding: 6px 25px;
+  height: 37px;
+  width: 300px;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
-  letter-spacing: 1px;
-  font-size: 20.25px;
-  margin-right: 60px;
+  font-size: 18px;
+  margin-right: 40px;
   transition: all 0.1s ease-in;
+  cursor: pointer;
 }
 
-.cta-btn:hover {
+.btn-container:hover {
   color: rgb(31, 31, 31);
   background-color: var(--color-accent);
 }
-.cta-btn:active {
+.btn-container:active {
   transform: translateY(2px);
 }
 
@@ -55,6 +65,7 @@ nav {
 }
 
 .profile-container {
+  cursor: pointer;
   display: flex;
   align-items: center;
   letter-spacing: 1px;
@@ -63,11 +74,13 @@ nav {
 .profile-container svg {
   fill: #fff;
   margin-right: 5px;
+  width: 30px;
 }
 
 .profile-container .username {
-  font-size: 23px;
+  font-size: 18px;
   font-weight: 600;
+  pointer-events: none;
 }
 
 .profile-window {
@@ -76,7 +89,7 @@ nav {
   position: absolute;
   right: 0;
   top: 80px;
-  width: 174px;
+  width: 200px;
   border-radius: 7.5px;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.24);
@@ -84,7 +97,11 @@ nav {
   animation: fade-from-left 0.2s ease-in;
 }
 
-.profile-window .triangle svg{
+.profile-window-show {
+  display: block;
+}
+
+.profile-window .window-triangle svg{
   fill: #fff;
   width: 25px;
   top: -12px;
@@ -101,8 +118,7 @@ nav {
   display: flex;
   padding: 4px 6px;
   align-items: center;
-  height: 40px;
-
+  height: 50px;
 }
 
 .option:first-child {
@@ -124,11 +140,61 @@ nav {
 
 }
 
+.option-icon {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
 .option svg{
   fill: var(--color-black);
-  width: 25px;
+  width: 23px;
+  margin-top: 1px;
 }
 .option .option-name {
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 300;
+  pointer-events: none;
+}
+
+
+@media screen and (max-width: 800px) {
+  .nav-logo {
+    font-size: 30px;
+    line-height: 25px;
+  }
+
+  .nav-logo br {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 520px) {
+
+
+  .profile-container .profile-icon {
+    width: 40px;
+  }
+
+  .profile-window {
+    right: 5px;
+    width: 230px;
+  }
+
+  .profile-window .window-triangle svg {
+    right: 20px;
+  }
+
+  .option {
+    padding-left: 10px
+  }
+
+  .option svg {
+    margin: 4px 10px 0 0;
+  }
+
+  .option .option-name {
+    font-size: 18px;
+  }
 }
