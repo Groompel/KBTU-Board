@@ -15,6 +15,9 @@ import {NewPostComponent} from './new-post/new-post.component';
 import {AboutPageComponent} from './about-page/about-page.component';
 import {SearchPageComponent} from './search-page/search-page.component';
 import {HttpClientModule} from '@angular/common/http';
+import {ProfileComponent} from './profile/profile.component';
+import {ProfileEditComponent} from './profile-edit/profile-edit.component';
+import {PostEditComponent} from './post-edit/post-edit.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import {HttpClientModule} from '@angular/common/http';
     NewPostComponent,
     AboutPageComponent,
     SearchPageComponent,
+    ProfileComponent,
+    ProfileEditComponent,
+    PostEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,4 +44,5 @@ import {HttpClientModule} from '@angular/common/http';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

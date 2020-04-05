@@ -8,14 +8,18 @@ import {AuthComponent} from './auth/auth.component';
 import {AboutPageComponent} from './about-page/about-page.component';
 import {SearchPageComponent} from './search-page/search-page.component';
 import {NewPostComponent} from './new-post/new-post.component';
+import {ProfileComponent} from './profile/profile.component';
+import {ProfileEditComponent} from './profile-edit/profile-edit.component';
 
 export const ROUTES: Route[] = [
   {path: '', component: MainPageComponent},
   {path: 'auth', component: AuthComponent},
   {path: 'about', component: AboutPageComponent},
   {path: 'search', component: SearchPageComponent},
+  {path: 'profile', component: ProfileComponent},
+  {path: 'profile/edit', component: ProfileEditComponent},
   {path: ':sectionName/posts/:postId', component: PostDetailsComponent},
-  {path: 'new/:sectionName', component: NewPostComponent},
+  {path: 'new', component: NewPostComponent},
   {path: '**', component: ErrorPageComponent}
 ];
 
