@@ -1,5 +1,7 @@
-import { Component, OnInit, AfterViewInit } from "@angular/core";
-import { ApiService } from "../api.service";
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {ApiService} from '../api.service';
+import {FormControl, FormGroup} from '@angular/forms';
+
 declare const initAuthPage: any;
 declare const changeTab: any;
 declare const authFormSubmitCheck: any;
@@ -7,54 +9,64 @@ declare const copyCodeToClipboard: any;
 declare const setIsValidUsername: any;
 declare const isValidFormForTelegramCode: any;
 declare const setIsValidTelegram: any;
+
 @Component({
-  selector: "app-auth",
-  templateUrl: "./auth.component.html",
-  styleUrls: ["./auth.component.css"]
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit, AfterViewInit {
   action = {
-    method: "get",
-    name: "login",
-    buttonName: "Войти"
+    method: 'get',
+    name: 'login',
+    buttonName: 'Войти'
   };
   code = {
-    code: "",
+    code: '',
     expireDate: new Date()
   };
 
-  telegramBotLink = "https://t.me/thugboikz";
+  telegramBotLink = 'https://t.me/thugboikz';
   response = {
-    message: "Подождите...",
+    message: 'Подождите...',
     valid: false,
     waitingForResponse: false,
-    usernameOrId: ""
+    usernameOrId: ''
   };
   showCodeProcess = false;
   codeExpireDiff;
   diff;
 
+  user = new FormGroup({
+    name: new FormControl(),
+    login: new FormControl(),
+    password: new FormControl(),
+    passwordRepeat: new FormControl()
+  });
+
+  constructor(private apiService: ApiService) {
+    setInterval(() => {
+      if (isValidFormForTelegramCode() && !(this.code.code === '')) {
+        this.codeTimer();
+      }
+    }, 1000);
+  }
+
   codeTimer() {
     const expireMillis = this.code.expireDate.getTime();
     const currentMillis = new Date().getTime();
     this.diff = expireMillis - currentMillis;
-    var minutes = Math.floor((this.diff % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((this.diff % (1000 * 60)) / 1000);
+    const minutes = Math.floor((this.diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((this.diff % (1000 * 60)) / 1000);
 
-    if (this.diff > 0)
-      this.codeExpireDiff = "Код действителен: " +
-        (minutes < 10 ? "0" + minutes : minutes) +
-        ":" +
-        (seconds < 10 ? "0" + seconds : seconds);
-    else
+    if (this.diff > 0) {
+      this.codeExpireDiff = 'Код действителен: ' +
+        (minutes < 10 ? '0' + minutes : minutes) +
+        ':' +
+        (seconds < 10 ? '0' + seconds : seconds);
+    } else {
       this.codeExpireDiff =
-        "Код просрочен. Для регистрации обновите страницу и попробуйте еще раз.";
-  }
-
-  checkUsername(username) {
-    if (this.action.name === "register") {
-      const isAvailable = this.apiService.isAvailableUsername(username);
-      setIsValidUsername(isAvailable);
+        'Код просрочен. Для регистрации обновите страницу и попробуйте еще раз.';
     }
   }
 
@@ -78,11 +90,11 @@ export class AuthComponent implements OnInit, AfterViewInit {
     copyCodeToClipboard(this.code);
   }
 
-  authFormSubmitCheck() {
-    if (this.code.code === "" && isValidFormForTelegramCode()) {
-      this.getTelegramCode();
+  checkUsername(username) {
+    if (this.action.name === 'register') {
+      const isAvailable = this.apiService.isAvailableUsername(username);
+      setIsValidUsername(isAvailable);
     }
-    authFormSubmitCheck();
   }
 
   changeTab(method, tab, buttonName) {
@@ -92,17 +104,23 @@ export class AuthComponent implements OnInit, AfterViewInit {
     this.action.buttonName = buttonName;
   }
 
-  constructor(private apiService: ApiService) {
-    setInterval(() => {
-      if (isValidFormForTelegramCode() && !(this.code.code === "")) {
-        this.codeTimer();
-      }
-    }, 1000);
+  authFormSubmitCheck() {
+    if (this.code.code === '' && isValidFormForTelegramCode()) {
+      this.getTelegramCode();
+    }
+    authFormSubmitCheck();
+  }
+
+  submitForm() {
+    console.warn(this.user.value.login);
+    console.warn(this.user.value.password);
+    return;
   }
 
   ngAfterViewInit(): void {
     initAuthPage();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 }

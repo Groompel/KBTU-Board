@@ -1,19 +1,20 @@
 <section class="header">
   <div class="bg"></div>
   <div class="searchbar-container">
-    <form class="searchbar">
-      <input class="query" name="q" type="text" placeholder="Наушники Airpods Pro, Calculus II..." autocomplete="off" />
-      <input type="hidden" name="category" [value]="selectedCategory.id" />
-      <input type="hidden" name="subcategory" [value]="selectedSubcategory.method" />
+    <form (ngSubmit)="submitForm()" [formGroup]="searchQuery" class="searchbar">
+      <input autocomplete="off" class="query" formControlName="query" name="q"
+             placeholder="Наушники Airpods Pro, Calculus II..." type="text"/>
+      <input [value]="selectedCategory.id" name="category" type="hidden"/>
+      <input [value]="selectedSubcategory.method" name="subcategory" type="hidden"/>
       <div class="select-container" id="category-select">
         <div class="select-container-inner" (click)="handleClicks('category')">
           <div class="triangle">
             <svg xmlns="http://www.w3.org/2000/svg" width="23.81" height="14.102" viewBox="0 0 23.81 14.102">
               <g id="dropdown-btn" data-name=" dropdown-btn" transform="translate(1.09 1.09)">
                 <path id="Path_151" data-name="Path 151" d="M.452,0,0,15.961"
-                  transform="translate(21.31 0.001) rotate(43)" fill="none" stroke="#868686" />
+                      fill="none" stroke="#868686" transform="translate(21.31 0.001) rotate(43)"/>
                 <path id="Path_152" data-name="Path 152" d="M.454,16.407,0,0"
-                  transform="translate(11.923 11.602) rotate(133)" fill="none" stroke="#868686" />
+                      transform="translate(11.923 11.602) rotate(133)" fill="none" stroke="#868686"/>
               </g>
             </svg>
           </div>
@@ -59,17 +60,17 @@
         </div>
       </div>
 
-      <button class="search-submit" type="submit" (click)="submitForm()">
+      <button class="search-submit" type="submit">
         <!-- SVG search-icon begin -->
         <svg class="search-icon" version="1.1" xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 511.999 511.999"
-          style="enable-background:new 0 0 511.999 511.999;" xml:space="preserve">
+             style="enable-background:new 0 0 511.999 511.999;" viewBox="0 0 511.999 511.999" x="0px"
+             xml:space="preserve" y="0px">
           <g>
             <g>
               <path d="M508.874,478.708L360.142,329.976c28.21-34.827,45.191-79.103,45.191-127.309c0-111.75-90.917-202.667-202.667-202.667
 			S0,90.917,0,202.667s90.917,202.667,202.667,202.667c48.206,0,92.482-16.982,127.309-45.191l148.732,148.732
 			c4.167,4.165,10.919,4.165,15.086,0l15.081-15.082C513.04,489.627,513.04,482.873,508.874,478.708z M202.667,362.667
-			c-88.229,0-160-71.771-160-160s71.771-160,160-160s160,71.771,160,160S290.896,362.667,202.667,362.667z" />
+			c-88.229,0-160-71.771-160-160s71.771-160,160-160s160,71.771,160,160S290.896,362.667,202.667,362.667z"/>
             </g>
           </g>
           <g>
@@ -123,16 +124,16 @@
         </div>
         <div class="icon" id="handshake-icon">
           <!-- SVG handshake icon begin -->
-          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px" y="0px" width="183px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
-            xml:space="preserve">
+          <svg id="Capa_1" style="enable-background:new 0 0 512 512;" version="1.1"
+               viewBox="0 0 512 512" width="183px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+               y="0px">
             <path style="fill:#F29F5C;" d="M418.258,249.103L405.252,143.45l-24.372,3l0.01-0.017l-47.25-26.591
 	c-5.04-2.836-10.824-4.07-16.583-3.538l-74.606,6.9c-9.171,0.848-17.366,6.081-21.993,14.045l-52.584,90.508
 	c-3.883,6.683-0.835,15.254,6.396,17.985l2.151,0.812c4.138,1.563,8.391,2.468,12.642,2.822l-6.663,5.803l-13.33,11.614
 	l-37.913,32.34c-6.749,5.879-7.45,16.109-1.571,22.858l3.846,4.405c7.55,8.658,20.691,9.557,29.365,2.005l14.49,16.62
 	c4.711,5.41,11.613,7.803,18.244,6.987c3.985-0.49,7.873-2.142,11.12-4.982l14.474,16.621c4.728,5.424,11.629,7.801,18.26,6.985
 	c3.985-0.491,7.874-2.127,11.122-4.966l7.866,6.798c7.552,8.673,20.708,9.57,29.382,2.018l10.693-9.329l89.896-70.012l0.097-0.089
-	l35.468-0.035L418.258,249.103z" />
+	l35.468-0.035L418.258,249.103z"/>
             <path style="fill:#D37D42;" d="M379.731,267.833l-0.097,0.089l-89.896,70.012l-10.693,9.329c-8.673,7.552-21.83,6.655-29.382-2.018
 	l-7.866-6.798c-3.248,2.839-7.138,4.476-11.122,4.966c-6.631,0.816-13.531-1.561-18.26-6.985l-14.474-16.621
 	c-3.248,2.839-7.136,4.491-11.12,4.982c-6.631,0.816-13.533-1.576-18.244-6.987l-14.49-16.62
@@ -288,18 +289,18 @@
         </div>
         <div class="icon" id="books-icon">
           <!-- SVG books icon begin -->
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-            y="0px" viewBox="0 0 600 600" xml:space="preserve">
+          <svg version="1.1" viewBox="0 0 600 600" x="0px"
+               xml:space="preserve" xmlns="http://www.w3.org/2000/svg" y="0px">
             <path style="fill:#878493;" d="M504,443.5H32v-216c0-4.418-3.582-8-8-8H8c-4.418,0-8,3.582-8,8v240c0,4.418,3.582,8,8,8h496
-	c4.418,0,8-3.582,8-8v-16C512,447.082,508.418,443.5,504,443.5z" />
+	c4.418,0,8-3.582,8-8v-16C512,447.082,508.418,443.5,504,443.5z"/>
             <path style="fill:#AD7DC9;" d="M104,91.5H40c-4.418,0-8,3.582-8,8v336c0,4.418,3.582,8,8,8h64c4.418,0,8-3.582,8-8v-336
-	C112,95.082,108.418,91.5,104,91.5z" />
+	C112,95.082,108.418,91.5,104,91.5z"/>
             <path style="fill:#8A6CBD;" d="M48,435.5v-336c0-4.418,3.582-8,8-8H40c-4.418,0-8,3.582-8,8v336c0,4.418,3.582,8,8,8h16
-	C51.582,443.5,48,439.918,48,435.5z" />
+	C51.582,443.5,48,439.918,48,435.5z"/>
             <g>
-              <rect x="32" y="139.5" style="fill:#FCDE76;" width="80" height="24" />
-              <rect x="32" y="307.5" style="fill:#FCDE76;" width="80" height="24" />
-              <rect x="32" y="355.5" style="fill:#FCDE76;" width="80" height="24" />
+              <rect height="24" style="fill:#FCDE76;" width="80" x="32" y="139.5"/>
+              <rect height="24" style="fill:#FCDE76;" width="80" x="32" y="307.5"/>
+              <rect height="24" style="fill:#FCDE76;" width="80" x="32" y="355.5"/>
             </g>
             <g>
               <rect x="32" y="139.5" style="fill:#FCCF6F;" width="16" height="24" />
@@ -507,15 +508,15 @@
     <span>Все объявления</span>
     <!-- SVG arrow begin -->
     <svg class="arrow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 492.004 492.004"
-      style="enable-background:new 0 0 492.004 492.004;" xml:space="preserve">
+         style="enable-background:new 0 0 492.004 492.004;" viewBox="0 0 492.004 492.004" x="0px"
+         xml:space="preserve" y="0px">
       <g>
         <g>
           <path d="M484.14,226.886L306.46,49.202c-5.072-5.072-11.832-7.856-19.04-7.856c-7.216,0-13.972,2.788-19.044,7.856l-16.132,16.136
 			c-5.068,5.064-7.86,11.828-7.86,19.04c0,7.208,2.792,14.2,7.86,19.264L355.9,207.526H26.58C11.732,207.526,0,219.15,0,234.002
 			v22.812c0,14.852,11.732,27.648,26.58,27.648h330.496L252.248,388.926c-5.068,5.072-7.86,11.652-7.86,18.864
 			c0,7.204,2.792,13.88,7.86,18.948l16.132,16.084c5.072,5.072,11.828,7.836,19.044,7.836c7.208,0,13.968-2.8,19.04-7.872
-			l177.68-177.68c5.084-5.088,7.88-11.88,7.86-19.1C492.02,238.762,489.228,231.966,484.14,226.886z" />
+			l177.68-177.68c5.084-5.088,7.88-11.88,7.86-19.1C492.02,238.762,489.228,231.966,484.14,226.886z"/>
         </g>
       </g>
       <g>
@@ -599,8 +600,8 @@
         <div class="teacher-quote">
           <div class="upper-quote quote">
             <!-- SVG quote begin -->
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-              y="0px" viewBox="0 0 95.333 95.332" style="enable-background:new 0 0 95.333 95.332;" xml:space="preserve">
+            <svg style="enable-background:new 0 0 95.333 95.332;" version="1.1" viewBox="0 0 95.333 95.332"
+                 x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" y="0px">
               <g>
                 <g>
                   <path
@@ -608,7 +609,7 @@
         c2.2-8.054,7.485-21.951,18.013-23.516c0.975-0.145,1.774-0.85,2.04-1.799l2.301-8.23c0.194-0.696,0.079-1.441-0.318-2.045
         s-1.035-1.007-1.75-1.105c-0.777-0.106-1.569-0.16-2.354-0.16c-12.637,0-25.152,13.19-30.433,32.076
         c-3.1,11.08-4.009,27.738,3.627,38.223c4.273,5.867,10.507,9,18.529,9.313c0.033,0.001,0.065,0.002,0.098,0.002
-        c9.898,0,18.675-6.666,21.345-16.209c1.595-5.705,0.874-11.688-2.032-16.851C40.971,49.307,36.236,45.586,30.512,43.939z" />
+        c9.898,0,18.675-6.666,21.345-16.209c1.595-5.705,0.874-11.688-2.032-16.851C40.971,49.307,36.236,45.586,30.512,43.939z"/>
                   <path
                     d="M92.471,54.413c-2.875-5.106-7.61-8.827-13.334-10.474c-2.348-0.676-4.696-1.019-6.979-1.019
         c-3.527,0-6.471,0.806-8.753,1.793c2.2-8.054,7.485-21.951,18.014-23.516c0.975-0.145,1.773-0.85,2.04-1.799l2.301-8.23
@@ -656,8 +657,8 @@
 
           <div class="lower-quote quote">
             <!-- SVG quote begin -->
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-              y="0px" viewBox="0 0 95.333 95.332" style="enable-background:new 0 0 95.333 95.332;" xml:space="preserve">
+            <svg style="enable-background:new 0 0 95.333 95.332;" version="1.1" viewBox="0 0 95.333 95.332"
+                 x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" y="0px">
               <g>
                 <g>
                   <path
@@ -665,7 +666,7 @@
         c2.2-8.054,7.485-21.951,18.013-23.516c0.975-0.145,1.774-0.85,2.04-1.799l2.301-8.23c0.194-0.696,0.079-1.441-0.318-2.045
         s-1.035-1.007-1.75-1.105c-0.777-0.106-1.569-0.16-2.354-0.16c-12.637,0-25.152,13.19-30.433,32.076
         c-3.1,11.08-4.009,27.738,3.627,38.223c4.273,5.867,10.507,9,18.529,9.313c0.033,0.001,0.065,0.002,0.098,0.002
-        c9.898,0,18.675-6.666,21.345-16.209c1.595-5.705,0.874-11.688-2.032-16.851C40.971,49.307,36.236,45.586,30.512,43.939z" />
+        c9.898,0,18.675-6.666,21.345-16.209c1.595-5.705,0.874-11.688-2.032-16.851C40.971,49.307,36.236,45.586,30.512,43.939z"/>
                   <path
                     d="M92.471,54.413c-2.875-5.106-7.61-8.827-13.334-10.474c-2.348-0.676-4.696-1.019-6.979-1.019
         c-3.527,0-6.471,0.806-8.753,1.793c2.2-8.054,7.485-21.951,18.014-23.516c0.975-0.145,1.773-0.85,2.04-1.799l2.301-8.23
@@ -739,16 +740,16 @@
   <a href="" class="all-ads-btn">
     <span>Все преподаватели</span>
     <!-- SVG arrow begin -->
-    <svg class="arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-      x="0px" y="0px" viewBox="0 0 492.004 492.004" style="enable-background:new 0 0 492.004 492.004;"
-      xml:space="preserve">
+    <svg class="arrow" style="enable-background:new 0 0 492.004 492.004;" version="1.1"
+         viewBox="0 0 492.004 492.004" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+         y="0px">
       <g>
         <g>
           <path d="M484.14,226.886L306.46,49.202c-5.072-5.072-11.832-7.856-19.04-7.856c-7.216,0-13.972,2.788-19.044,7.856l-16.132,16.136
 			c-5.068,5.064-7.86,11.828-7.86,19.04c0,7.208,2.792,14.2,7.86,19.264L355.9,207.526H26.58C11.732,207.526,0,219.15,0,234.002
 			v22.812c0,14.852,11.732,27.648,26.58,27.648h330.496L252.248,388.926c-5.068,5.072-7.86,11.652-7.86,18.864
 			c0,7.204,2.792,13.88,7.86,18.948l16.132,16.084c5.072,5.072,11.828,7.836,19.044,7.836c7.208,0,13.968-2.8,19.04-7.872
-			l177.68-177.68c5.084-5.088,7.88-11.88,7.86-19.1C492.02,238.762,489.228,231.966,484.14,226.886z" />
+			l177.68-177.68c5.084-5.088,7.88-11.88,7.86-19.1C492.02,238.762,489.228,231.966,484.14,226.886z"/>
         </g>
       </g>
       <g>

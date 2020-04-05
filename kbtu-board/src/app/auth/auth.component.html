@@ -12,14 +12,14 @@
         </div>
       </div>
       <div class="form-container">
-        <form class="auth-form" action="/auth/{{ action.name }}" [method]="action.method" novalidate>
+        <form (ngSubmit)="submitForm()" [formGroup]="user" [method]="action.method" class="auth-form" novalidate>
 
           <div class="input-form register login response-error">
             Данное имя пользователя уже занято! Попробуйте другое.
           </div>
 
           <div class="input-form register">
-            <input name="name" type="text" autocomplete="off" required>
+            <input autocomplete="off" formControlName="name" required type="text">
             <label for="name">
               <span>Ваше имя</span>
             </label>
@@ -27,7 +27,8 @@
           </div>
 
           <div class="input-form register login">
-            <input class="login" name="username" type="text" autocomplete="off" required (input)="checkUsername($event.target.value.trim())">
+            <input (input)="checkUsername($event.target.value.trim())" autocomplete="off" class="login"
+                   formControlName="login" required type="text">
             <label for="username">
               <span>Имя пользователя</span>
             </label>
@@ -36,7 +37,7 @@
           </div>
 
           <div class="input-form register login">
-            <input class="login" name="password" type="password" autocomplete="off" required>
+            <input autocomplete="off" class="login" formControlName="password" required type="password">
             <label for="password">
               <span>Пароль</span>
             </label>
@@ -45,7 +46,7 @@
           </div>
 
           <div class="input-form register">
-            <input type="password" autocomplete="off" required>
+            <input autocomplete="off" formControlName="passwordRepeat" required type="password">
             <label for="password-repeat">
               <span>Повторите пароль</span>
             </label>

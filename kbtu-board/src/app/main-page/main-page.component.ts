@@ -1,5 +1,7 @@
-import {Component, OnInit, ViewEncapsulation, AfterViewInit} from '@angular/core';
-import { ApiService } from '../api.service';
+import {AfterViewInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ApiService} from '../api.service';
+import {FormControl, FormGroup} from '@angular/forms';
+
 declare const changeSubcategories: any;
 declare const initMainPage: any;
 declare const showCategoryWindow: any;
@@ -19,53 +21,58 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   lastAds: any;
   bestTeachers: any;
 
+  searchQuery = new FormGroup({
+    query: new FormControl(),
+    category: new FormControl(),
+    subcategory: new FormControl()
+  });
 
   selectedCategory = {
     id: 0,
-    name: "Категория",
-  }
+    name: 'Категория',
+  };
   selectedSubcategory = {
     method: 0,
-    name: "Тип",
+    name: 'Тип',
   };
 
   CATEGORY_IDS = [
     {
       id: 0,
-      name: "Категория",
+      name: 'Категория',
       subcategories: {
-        first: "Тип",
+        first: 'Тип',
       }
     },
     {
       id: 1,
-      name: "Услуги",
+      name: 'Услуги',
       subcategories: {
-        first: "Получить",
-        second: "Предложить",
+        first: 'Получить',
+        second: 'Предложить',
       }
     },
     {
       id: 2,
-      name: "Потеряно и найдено",
+      name: 'Потеряно и найдено',
       subcategories: {
-        first: "Потерял",
-        second: "Нашел",
+        first: 'Потерял',
+        second: 'Нашел',
       }
     },
     {
       id: 3,
-      name: "Учеба",
+      name: 'Учеба',
       subcategories: {
-        first: "Научить",
+        first: 'Научить',
       }
     },
 
-  ]
+  ];
 
   getArray(n) {
     n = parseInt(n);
-    return Array(n).fill(0,0,n);
+    return Array(n).fill(0, 0, n);
   }
 
   showAd(id, adType) {
@@ -73,14 +80,16 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   submitForm() {
+    console.warn(this.searchQuery.value);
     searchSubmitCheck();
   }
 
   handleClicks(show: string) {
-    if (show === "category")
+    if (show === 'category') {
       showCategoryWindow();
-    else if (show === "subcategory")
+    } else if (show === 'subcategory') {
       showSubcategoryWindow();
+    }
   }
 
   changeCategoryById(id) {
@@ -90,6 +99,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         this.selectedCategory.name = category.name;
         this.selectedSubcategory.method = 1;
         this.selectedSubcategory.name = category.subcategories.first;
+        this.searchQuery.value.category = id;
       }
     });
     changeSubcategories(id);
@@ -98,14 +108,15 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   changeSubcategory(method, name) {
     this.selectedSubcategory.method = method;
     this.selectedSubcategory.name = name;
+    this.searchQuery.value.subcategory = method;
   }
-
 
 
   constructor(
     private apiService: ApiService,
   ) {
   }
+
   ngAfterViewInit(): void {
     initMainPage();
     removeBgFromNavbar();
@@ -120,10 +131,5 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.apiService.getBestTeachers(3).subscribe(data => {
       this.bestTeachers = data;
     });
-
-
-
   }
-
-
 }
