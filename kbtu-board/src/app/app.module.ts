@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 import {AppComponent} from './app.component';
@@ -13,7 +14,7 @@ import {AuthComponent} from './auth/auth.component';
 import {NewPostComponent} from './new-post/new-post.component';
 import {AboutPageComponent} from './about-page/about-page.component';
 import {SearchPageComponent} from './search-page/search-page.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

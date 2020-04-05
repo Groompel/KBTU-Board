@@ -1,1 +1,41 @@
-<p>new-post works!</p>
+<div id="form-container">
+  <!-- Tab links -->
+  <div class="tab">
+    <button (click)="openCity($event, 'help')" class="tablinks">Услуги</button>
+    <button (click)="openCity($event, 'lost')" class="tablinks">Потеряно и Найдено</button>
+    <button (click)="openCity($event, 'study')" class="tablinks">Учеба</button>
+  </div>
+
+  <!-- Tab content -->
+  <div class="tabcontent active" id="help">
+    <h3>Услуги</h3>
+    <form (ngSubmit)="submitHelp()" [formGroup]="help">
+      <input formControlName="head" placeholder="Заголовок" type="text">
+      <input formControlName="description" placeholder="Описание" type="text">
+      <input formControlName="reward" placeholder="Вознаграждение" type="text">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div class="tabcontent active" id="lost">
+    <h3>Потеряно и найдено</h3>
+    <form (ngSubmit)="submitLost()" [formGroup]="lost">
+      <input formControlName="head" placeholder="Заголовок" type="text">
+      <input formControlName="description" placeholder="Описание" type="text">
+      <input formControlName="place" placeholder="Место находки" type="text">
+      <input formControlName="time" placeholder="Время находки" type="time">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div class="tabcontent" id="study">
+    <h3>Учеба</h3>
+    <form (ngSubmit)="submitStudy()" [formGroup]="study">
+      <input formControlName="head" placeholder="Заголовок" type="text">
+      <input formControlName="description" placeholder="Описание" type="text">
+      <input formControlName="subject" placeholder="Предмет" type="text">
+      <input formControlName="reward" placeholder="Вознаграждение" type="text">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
