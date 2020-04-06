@@ -18,6 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ProfileComponent} from './profile/profile.component';
 import {ProfileEditComponent} from './profile-edit/profile-edit.component';
 import {PostEditComponent} from './post-edit/post-edit.component';
+import {UnderConstructionComponent} from './under-construction/under-construction.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {PostEditComponent} from './post-edit/post-edit.component';
     ProfileComponent,
     ProfileEditComponent,
     PostEditComponent,
+    UnderConstructionComponent,
   ],
   imports: [
     BrowserModule,
