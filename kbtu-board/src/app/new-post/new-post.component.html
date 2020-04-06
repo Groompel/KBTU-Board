@@ -5,8 +5,7 @@
     <button (click)="openCategory('study')" class="tablinks">Учеба</button>
   </div>
 
-  <div class="tabcontent active" id="help">
-    <h3>Услуги</h3>
+  <div class="tabcontent">
     <form (ngSubmit)="submitForm()" [formGroup]="post">
       <input formControlName="head" placeholder="Заголовок" type="text">
       <div *ngIf="!head.valid && (head.dirty || head.touched)" class="alerts">
@@ -14,33 +13,18 @@
         <div *ngIf="head.errors.minlength" class="alert">Короче 5 символов</div>
         <div *ngIf="head.errors.maxlength" class="alert">Длиннее 40 символов</div>
       </div>
+
       <input formControlName="description" placeholder="Описание" type="text">
       <div *ngIf="!description.valid && (description.dirty || description.touched)" class="alerts">
         <div *ngIf="description.errors.minlength " class="alert">Короче 10 символов</div>
         <div *ngIf="description.errors.maxlength" class="alert">Длиннее 200 символов</div>
       </div>
-      <div formGroupName="help">
+
+      <div class="content" formGroupName="help" id="help">
         <input formControlName="reward" placeholder="Вознаграждение" type="text">
       </div>
-      <button [disabled]="!post.valid" type="submit">Подать объявление</button>
-    </form>
-  </div>
 
-  <div class="tabcontent active" id="lost">
-    <h3>Потеряно и найдено</h3>
-    <form (ngSubmit)="submitForm()" [formGroup]="post">
-      <input formControlName="head" placeholder="Заголовок" type="text">
-      <div *ngIf="!head.valid && (head.dirty || head.touched)" class="alerts">
-        <div *ngIf="head.errors.required" class="alert">Заголовок обязателен</div>
-        <div *ngIf="head.errors.minlength" class="alert">Короче 5 символов</div>
-        <div *ngIf="head.errors.maxlength" class="alert">Длиннее 40 символов</div>
-      </div>
-      <input formControlName="description" placeholder="Описание" type="text">
-      <div *ngIf="!description.valid && (description.dirty || description.touched)" class="alerts">
-        <div *ngIf="description.errors.minlength " class="alert">Короче 10 символов</div>
-        <div *ngIf="description.errors.maxlength" class="alert">Длиннее 200 символов</div>
-      </div>
-      <div formGroupName="lost">
+      <div class="content" formGroupName="lost" id="lost">
         <input formControlName="place" placeholder="Место находки" type="text">
         <div class="one-line-input">
           <div>
@@ -63,29 +47,12 @@
           </div>
         </div>
       </div>
-      <button [disabled]="!post.valid" type="submit">Подать объявление</button>
-    </form>
-  </div>
 
-  <div class="tabcontent" id="study">
-    <h3>Учеба</h3>
-    <form (ngSubmit)="submitForm()" [formGroup]="post">
-      <input formControlName="head" placeholder="Заголовок" type="text">
-      <div *ngIf="!head.valid && (head.dirty || head.touched)" class="alerts">
-        <div *ngIf="head.errors.required" class="alert">Заголовок обязателен</div>
-        <div *ngIf="head.errors.minlength" class="alert">Короче 5 символов</div>
-        <div *ngIf="head.errors.maxlength" class="alert">Длиннее 40 символов</div>
-      </div>
-      <input formControlName="description" placeholder="Описание" type="text">
-      <div *ngIf="!description.valid && (description.dirty || description.touched)" class="alerts">
-        <div *ngIf="description.errors.minlength " class="alert">Короче 10 символов</div>
-        <div *ngIf="description.errors.maxlength" class="alert">Длиннее 200 символов</div>
-      </div>
-      <div formGroupName="study">
+      <div class="content" formGroupName="study" id="study">
         <input formControlName="subject" placeholder="Предмет" type="text">
         <input formControlName="reward" placeholder="Вознаграждение" type="text">
       </div>
-      <button [disabled]="!post.valid" type="submit">Подать объявление</button>
+      <button [disabled]="disableButton()" type="submit">Подать объявление</button>
     </form>
   </div>
 </div>

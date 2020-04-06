@@ -11,6 +11,8 @@ export class NewPostComponent implements OnInit {
   constructor() {
   }
 
+  category = '';
+
   post = new FormGroup(
     {
       head: new FormControl('',
@@ -40,7 +42,8 @@ export class NewPostComponent implements OnInit {
 
       study: new FormGroup({
         subject: new FormControl(),
-        reward: new FormControl()
+        reward: new FormControl('',
+          [Validators.required])
       })
     }
   );
@@ -93,11 +96,17 @@ export class NewPostComponent implements OnInit {
     return this.study.get('subject');
   }
 
+  disableButton(): boolean {
+    return !this.post.valid;
+  }
+
   submitForm() {
     console.warn(this.post.value);
   }
 
-  ngOnInit(): void {
+  ngOnInit()
+    :
+    void {
     this.openCategory('lost');
   }
 
@@ -106,7 +115,7 @@ export class NewPostComponent implements OnInit {
     let tabcontent;
     let tablinks;
 
-    tabcontent = document.getElementsByClassName('tabcontent');
+    tabcontent = document.getElementsByClassName('content');
     for (i = 0; i < tabcontent.length; i++) {
       tabcontent[i].style.display = 'none';
     }
@@ -118,5 +127,11 @@ export class NewPostComponent implements OnInit {
 
     document.getElementById(category).style.display = 'block';
     document.getElementById(category).className += ' active';
+
+    this.category = category;
+    this.study.disable();
+    this.lost.disable();
+    this.help.disable();
+    this.post.get(this.category).enable();
   }
 }
