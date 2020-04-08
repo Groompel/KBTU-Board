@@ -2,70 +2,79 @@
   <div class="auth-container-outer">
     <div class="auth-container-inner">
       <div class="tabs">
-        <div class="tab active-tab login-tab" (click)="changeTab('get', 'login', 'Вход')">
+        <div class="tab active-tab login-tab" (click)="changeTab('login', 'Вход')">
           <div class="tab-name">Вход</div>
           <span class="line"></span>
         </div>
-        <div class="tab register-tab" (click)="changeTab('get', 'register', 'Зарегистрироваться')">
+        <div class="tab register-tab" (click)="changeTab('register', 'Зарегистрироваться')">
           <div class="tab-name">Регистрация</div>
           <span class="line"></span>
         </div>
       </div>
       <div class="form-container">
-        <form (ngSubmit)="submitForm()" [formGroup]="user" [method]="action.method" class="auth-form" novalidate>
+        <form (ngSubmit)="submitForm()" [formGroup]="user" class="auth-form">
 
-          <div class="input-form register login response-error">
-            Данное имя пользователя уже занято! Попробуйте другое.
+          <div class="error-container" [style.display]="authResponse.showErrorResponse ? 'block' : 'none'">
+            <div class="error-title">Ошибка!</div>
+            <div class="error-description">
+              {{ authResponse.errorMessage }}
+            </div>
           </div>
 
           <div class="input-form register">
-            <input autocomplete="off" formControlName="name" required type="text">
+            <input autocomplete="off" formControlName="name" type="text" (input)="addValidators('name')">
             <label for="name">
               <span>Ваше имя</span>
             </label>
-            <div class="error"></div>
+            <div class="error">{{ user.get("name").invalid ? user.get("name").errors.forbidden.errorMessage : ""}}</div>
+            <div class="margin-creator"></div>
           </div>
 
           <div class="input-form register login">
-            <input (input)="checkUsername($event.target.value.trim())" autocomplete="off" class="login"
-                   formControlName="login" required type="text">
+            <input autocomplete="off" class="login" formControlName="username" type="text"
+              (input)="addValidators('username')">
             <label for="username">
               <span>Имя пользователя</span>
             </label>
-            <div class="error"></div>
+            <div class="error">
+              {{ user.get("username").invalid ? user.get("username").errors.forbidden.errorMessage : ""}}</div>
 
           </div>
 
           <div class="input-form register login">
-            <input autocomplete="off" class="login" formControlName="password" required type="password">
+            <input autocomplete="off" class="login" formControlName="password" type="password"
+              (input)="addValidators('password')">
             <label for="password">
               <span>Пароль</span>
             </label>
-            <div class="error"></div>
+            <div class="error">
+              {{ user.get("password").invalid ? user.get("password").errors.forbidden.errorMessage : ""}}</div>
 
           </div>
 
           <div class="input-form register">
-            <input autocomplete="off" formControlName="passwordRepeat" required type="password">
+            <input autocomplete="off" formControlName="passwordRepeat" type="password">
             <label for="password-repeat">
               <span>Повторите пароль</span>
             </label>
-            <div class="error"></div>
+            <div class="error">
+              {{ user.get("passwordRepeat").invalid ? user.get("passwordRepeat").errors.passwordRepeatDoesNotMatch.errorMessage : ""}}
+            </div>
           </div>
 
-          <div class="telegram-verification input-form register">
+          <div class="telegram-verification register" *ngIf="codeResponse.code !== '' ">
             <div class="text">
               <h4>Подтверждение через Telegram.</h4>
-              <div>Для подтверждения аккаунта, а так же в случае, если Вы забудете пароль, требуется верификация через
+              <div>Для подтверждения аккаунта требуется верификация через
                 мессенджер Telegram.
                 Если у Вас его нет, то можете <a href="https://web.telegram.org/#/login" target="_blank">cоздать аккаунт
                   здесь</a> или скачать приложение для
-                <a href="https://play.google.com/store/apps/details?id=org.telegram.messenger" target="_blank">Android</a>
+                <a href="https://play.google.com/store/apps/details?id=org.telegram.messenger"
+                  target="_blank">Android</a>
                 или
                 <a href="https://apps.apple.com/ru/app/telegram-messenger/id686449807" target="_blank">IOS</a>.
                 <br>
-                Для подтверждения перейдите по <a class="bot-link" [href]="telegramBotLink"
-                  target="_blank">ссылке</a>
+                Для подтверждения перейдите по <a class="bot-link" [href]="telegramBotLink" target="_blank">ссылке</a>
                 на наш Telegram бот и отправьте ему данный код:
 
                 <div class="code-container">
@@ -91,30 +100,32 @@
                       </div>
                       Скопировано
                     </div>
-                    <span>{{ code.code }}</span>
-                  </div>.
+                    <span>{{ codeResponse.code }}</span>
+                  </div>
                   <div class="hint">(намжите, чтобы скопировать)</div>
                 </div>
               </div>
               <div class="code-control">
-                <div class="code-timer"  ng-app ng-controller="codeTimer">
+                <div class="code-timer" ng-app ng-controller="codeTimer">
                   <span>
-                    {{ codeExpireDiff }}
+                    {{ telegramId.hasError("codeTimeExpired") ? telegramId.errors.codeTimeExpired.errorMessage : codeTimerMessage }}
                   </span>
                 </div>
               </div>
               <ol class="actions">
-                <li>Отправьте <a [href]="telegramBotLink" target="_blank">боту</a> команду <span class="command">/start</span> или нажмите на кнопку "Старт" в нижней
+                <li>Отправьте <a [href]="telegramBotLink" target="_blank">боту</a> команду <span
+                    class="command">/start</span> или нажмите на кнопку "Старт" в нижней
                   части окна.</li>
-                <li>Отправьте команду <span class="command">/validate <span class="code">{{ code.code }}</span></span>.</li>
+                <li>Отправьте команду <span class="command">/validate <span
+                      class="code">{{ codeResponse.code }}</span></span>.</li>
                 <li>Нажмите на кнопку "Проверить".</li>
               </ol>
             </div>
             <button class="check-btn" type="button" (click)="checkTelegramCode()">
               <!-- SVG tik icon begin -->
-              <svg [style.display]="response.valid ? 'block' : 'none'" class="tik-icon" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
-                style="enable-background:new 0 0 512 512;" xml:space="preserve">
+              <svg [style.display]="telegramResponse.valid ? 'block' : 'none'" class="tik-icon" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                 <g>
                   <g>
                     <path d="M383.841,171.838c-7.881-8.31-21.02-8.676-29.343-0.775L221.987,296.732l-63.204-64.893
@@ -164,62 +175,54 @@
               <!-- SVG tik icon end -->
 
               <!-- SVG loading icon begin -->
-              <svg [style.display]="response.waitingForResponse ? 'block' : 'none'" class="loading-icon" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 95.396 95.396"
-                style="enable-background:new 0 0 95.396 95.396;" xml:space="preserve">
-                <g>
-                  <path d="M59.258,31.609c-0.366,0.602-0.178,1.374,0.404,1.725c0.027,0.014,0.048,0.031,0.062,0.038L80.64,46.064L95.211,24.46
-		c0.273-0.438,0.24-1.002-0.075-1.404c-0.273-0.402-0.801-0.592-1.286-0.466l-10.404,2.606l-0.533,0.134
-		C74.948,11.646,60.422,3.214,44.486,3.214C19.956,3.214,0,23.172,0,47.698s19.956,44.484,44.486,44.484
-		c18.478,0,35.229-11.628,41.687-28.938c1.242-3.333-0.451-7.05-3.792-8.295c-3.34-1.246-7.053,0.451-8.295,3.791
-		c-4.579,12.293-16.478,20.551-29.6,20.551c-17.428,0-31.595-14.172-31.595-31.59c0-17.42,14.167-31.591,31.595-31.591
-		c10.032,0,19.282,4.712,25.192,12.552l-9.329,2.344C59.911,31,59.497,31.217,59.258,31.609z" />
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
-                <g>
-                </g>
+              <!-- [style.display]="isLoading.telegram ? 'block' : 'none'"  -->
+              <svg class="loading-icon" version="1.1" [style.display]="isLoading.telegram ? 'block' : 'none'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+                <path
+                  d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+                  <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s" from="0 50 50"
+                    to="360 50 50" repeatCount="indefinite" />
+                </path>
               </svg>
+
+
               <!-- SVG loading icon end -->
+
+              <!-- SVG error icon begin -->
+              <svg [style.display]="!telegramResponse.valid && telegramResponse.valid !== ''  && !isLoading.telegram ? 'block' : 'none'"
+                viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="m256 512c-141.160156 0-256-114.839844-256-256s114.839844-256 256-256 256 114.839844 256 256-114.839844 256-256 256zm0-475.429688c-120.992188 0-219.429688 98.4375-219.429688 219.429688s98.4375 219.429688 219.429688 219.429688 219.429688-98.4375 219.429688-219.429688-98.4375-219.429688-219.429688-219.429688zm0 0" />
+                <path
+                  d="m347.429688 365.714844c-4.679688 0-9.359376-1.785156-12.929688-5.359375l-182.855469-182.855469c-7.144531-7.144531-7.144531-18.714844 0-25.855469 7.140625-7.140625 18.714844-7.144531 25.855469 0l182.855469 182.855469c7.144531 7.144531 7.144531 18.714844 0 25.855469-3.570313 3.574219-8.246094 5.359375-12.925781 5.359375zm0 0" />
+                <path
+                  d="m164.570312 365.714844c-4.679687 0-9.355468-1.785156-12.925781-5.359375-7.144531-7.140625-7.144531-18.714844 0-25.855469l182.855469-182.855469c7.144531-7.144531 18.714844-7.144531 25.855469 0 7.140625 7.140625 7.144531 18.714844 0 25.855469l-182.855469 182.855469c-3.570312 3.574219-8.25 5.359375-12.929688 5.359375zm0 0" />
+              </svg>
+              <!-- SVG error icon end -->
+
+
 
               Проверить
             </button>
 
-            <div class="response-info" [style.display]="showCodeProcess ? 'block' : 'none'">
-              {{ response.message }}
-              <span class="response-username">{{ response.usernameOrId }}</span>
+            <div class="response-info" [style.display]="isLoading.telegram || telegramResponse.valid !== '' ? 'block' : 'none'"
+              [style.color]="telegramResponse.valid !== '' ? telegramResponse.valid ? 'var(--color-medium-gray' : 'var(--color-error)' : 'var(--color-medium-gray)'">
+              {{ telegramResponse.message }}
+              <div class="response-username">{{ telegramResponse.telegramId !== '' ? "(" + telegramResponse.telegramId + ")" : '' }}</div>
             </div>
           </div>
 
-
-
-          <button class="submit-btn" type="submit" (click)="authFormSubmitCheck()">{{ action.buttonName }}</button>
+          <button class="submit-btn" type="submit">
+            <svg class="loading-icon" version="1.1" [style.display]="isLoading.form ? 'block' : 'none'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 100 100" xml:space="preserve">
+                <path
+                  d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+                  <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s" from="0 50 50"
+                    to="360 50 50" repeatCount="indefinite" />
+                </path>
+              </svg>
+            {{ currentTab.buttonName }}
+          </button>
         </form>
       </div>
     </div>

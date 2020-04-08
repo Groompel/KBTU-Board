@@ -2,7 +2,7 @@
 
 .nav-container {
   background-color: var(--color-primary);
-   width: 100%;
+  width: 100%;
 }
 
 nav {
@@ -90,7 +90,7 @@ nav {
   position: absolute;
   right: 0;
   top: 80px;
-  width: 200px;
+  min-width: 200px;
   border-radius: 7.5px;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.24);
@@ -144,14 +144,15 @@ nav {
 .option-icon {
   height: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
   pointer-events: none;
 }
 
 .option svg{
   fill: var(--color-black);
-  width: 23px;
-  margin-top: 1px;
+  width: 26px;
+  margin-right: 8px;
 }
 .option .option-name {
   font-size: 18px;
@@ -180,7 +181,7 @@ nav {
 
   .profile-window {
     right: 5px;
-    width: 230px;
+    min-width: 230px;
   }
 
   .profile-window .window-triangle svg {
@@ -191,8 +192,8 @@ nav {
     padding-left: 10px
   }
 
-  .option svg {
-    margin: 4px 10px 0 0;
+  .option-icon svg {
+    margin: 0px 10px 0 0;
   }
 
   .option .option-name {
