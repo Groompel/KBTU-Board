@@ -1,1 +1,20 @@
-<app-under-construction></app-under-construction>
+<div id="profile">
+  <div class="container">
+    <img src="assets/img/avatar.webp" alt="Avatar">
+    <div id="profile-info">
+      <h3>Имя: {{user.name}}</h3>
+      <h3>Логин: {{user.login}}</h3>
+      <h3>Telegram: @{{user.telegram}}</h3>
+    </div>
+  </div>
+
+  <div id="posts" *ngIf="posts">
+    <h1>Ваши объявления</h1>
+    <div class="post" *ngFor="let p of posts">
+      <h2>{{p.header}}</h2>
+      <p>
+        {{p.description}}
+      </p>
+    </div>
+  </div>
+</div>

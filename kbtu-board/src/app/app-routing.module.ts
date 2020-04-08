@@ -10,6 +10,7 @@ import {SearchPageComponent} from './search-page/search-page.component';
 import {NewPostComponent} from './new-post/new-post.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ProfileEditComponent} from './profile-edit/profile-edit.component';
+import {UnderConstructionComponent} from "./under-construction/under-construction.component";
 
 export const ROUTES: Route[] = [
   {path: '', component: MainPageComponent},
@@ -20,7 +21,8 @@ export const ROUTES: Route[] = [
   {path: 'profile/edit', component: ProfileEditComponent},
   {path: ':sectionName/posts/:postId', component: PostDetailsComponent},
   {path: 'new', component: NewPostComponent},
-  {path: '**', component: ErrorPageComponent}
+  {path: '**', component: ErrorPageComponent},
+  {path: 'testa', component: UnderConstructionComponent}
 ];
 
 @NgModule({

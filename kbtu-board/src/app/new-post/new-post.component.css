@@ -30,11 +30,7 @@
 
 .tab button:hover {
   background-color: var(--color-accent);
-}
-
-
-.tab button.active {
-  background-color: var(--color-accent);
+  color: var(--color-black)
 }
 
 
@@ -81,9 +77,15 @@ input, .tabcontent button, select {
 .tabcontent button {
   background-color: var(--color-primary);
   border: 1px solid var(--border-color-gray);
+  transition: 0.3s;
 }
 
 
 .tabcontent button:hover {
   background-color: var(--color-accent);
+  color: var(--color-black)
+}
+
+button {
+  color: white;
 }

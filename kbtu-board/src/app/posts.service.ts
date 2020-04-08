@@ -23,4 +23,8 @@ export class PostsService {
   public getAllPosts(): Observable<Post[]> {
     return of(POSTS);
   }
+
+  public getUserPosts(userId: number): Observable<Post[]> {
+    return of(POSTS);
+  }
 }
