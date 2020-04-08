@@ -1,0 +1,27 @@
+@import "../../styles.css";
+
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 2;
+  width: 60%;
+  margin: 15% auto;
+}
+
+label {
+  padding: 5px 10px;
+  width: 25%;
+}
+
+input, select {
+  width: available;
+}
+
+.field-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 10px 20px;
+}

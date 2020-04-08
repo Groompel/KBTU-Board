@@ -1,1 +1,37 @@
-<p>profile-edit works!</p>
+<div *ngIf="authService.user" class="profile">
+  <form (ngSubmit)="submitForm()" [formGroup]="profileInfo">
+    <div class="field-container">
+      <label for="name">Имя:</label>
+      <input formControlName="name" id="name" type="text">
+    </div>
+
+    <div class="field-container">
+      <label for="year">Год поступления:</label>
+      <input formControlName="year" id="year" type="number">
+
+      <label for="faculty">Факультет</label>
+      <select formControlName="faculty" id="faculty">
+        <option value="fit">ФИТ</option>
+        <option value="mkm">МКМ</option>
+        <option value="ise">МШЭ</option>
+        <option value="bs">БШ</option>
+        <option value="sce">НОЦХИ</option>
+        <option value="feogi">ФЭНГИ</option>
+        <option value="kma">КМА</option>
+      </select>
+    </div>
+
+    <div class="field-container">
+      <label for="about">О себе:</label>
+      <input formControlName="about" id="about" type="text">
+    </div>
+
+    <div class="field-container">
+      <button type="submit">Сохранить</button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="!authService.user" class="profile">
+  <h1>Похоже, что вам надо <u><a routerLink="/auth">войти или зарегестрироваться!</a></u></h1>
+</div>

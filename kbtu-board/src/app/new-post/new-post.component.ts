@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-new-post',
@@ -11,63 +11,127 @@ export class NewPostComponent implements OnInit {
   constructor() {
   }
 
-  help = new FormGroup({
-    head: new FormControl(),
-    description: new FormControl(),
-    reward: new FormControl(),
-  });
+  category = '';
 
-  lost = new FormGroup({
-    head: new FormControl(),
-    description: new FormControl(),
-    time: new FormControl(),
-    place: new FormControl(),
-    left: new FormControl(),
-    photo: new FormControl()
-  });
+  post = new FormGroup(
+    {
+      head: new FormControl('',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(40)
+        ]),
 
-  study = new FormGroup({
-    head: new FormControl(),
-    description: new FormControl(),
-    subject: new FormControl(),
-    reward: new FormControl()
-  });
+      description: new FormControl('',
+        [
+          Validators.minLength(10),
+          Validators.maxLength(200)
+        ]),
 
-  submitHelp() {
-    console.warn(this.help.value);
+      help: new FormGroup({
+        reward: new FormControl(),
+      }),
+
+      lost: new FormGroup({
+        date: new FormControl(),
+        time: new FormControl(),
+        place: new FormControl(),
+        lostOrFound: new FormControl('',
+          Validators.required)
+      }),
+
+      study: new FormGroup({
+        subject: new FormControl(),
+        reward: new FormControl('',
+          [Validators.required])
+      })
+    }
+  );
+
+  get head() {
+    return this.post.get('head');
   }
 
-  submitLost() {
-    console.warn(this.lost.value);
+  get description() {
+    return this.post.get('description');
   }
 
-  submitStudy() {
-    console.warn(this.study.value);
+  get help() {
+    return this.post.get('help');
   }
 
-  ngOnInit(): void {
+  get helpReward() {
+    return this.help.get('reward');
   }
 
-  openCategory(evt, category) {
-    // Declare all variables
+  get lost() {
+    return this.post.get('lost');
+  }
+
+  get lostDate() {
+    return this.lost.get('reward');
+  }
+
+  get lostTime() {
+    return this.lost.get('time');
+  }
+
+  get lostPlace() {
+    return this.lost.get('place');
+  }
+
+  get lostType() {
+    return this.lost.get('lostOrFound');
+  }
+
+  get study() {
+    return this.post.get('study');
+  }
+
+  get studySubject() {
+    return this.study.get('subject');
+  }
+
+  get studyReward() {
+    return this.study.get('subject');
+  }
+
+  disableButton(): boolean {
+    return !this.post.valid;
+  }
+
+  submitForm() {
+    console.warn(this.post.value);
+  }
+
+  ngOnInit()
+    :
+    void {
+    this.openCategory('lost');
+  }
+
+  openCategory(category) {
     let i;
     let tabcontent;
     let tablinks;
 
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName('tabcontent');
+    tabcontent = document.getElementsByClassName('content');
     for (i = 0; i < tabcontent.length; i++) {
       tabcontent[i].style.display = 'none';
     }
 
-    // Get all elements with class="tablinks" and remove the class "active"
     tablinks = document.getElementsByClassName('tablinks');
     for (i = 0; i < tablinks.length; i++) {
       tablinks[i].className = tablinks[i].className.replace(' active', '');
     }
 
-    // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(category).style.display = 'block';
-    evt.currentTarget.className += ' active';
+    document.getElementById(category).className += ' active';
+
+    this.category = category;
+    this.study.disable();
+    this.lost.disable();
+    this.help.disable();
+    this.post.get(this.category).enable();
   }
 }

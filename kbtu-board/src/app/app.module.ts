@@ -20,6 +20,7 @@ import {ProfileEditComponent} from './profile-edit/profile-edit.component';
 import {PostEditComponent} from './post-edit/post-edit.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import {UnderConstructionComponent} from './under-construction/under-construction.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
     ProfileComponent,
     ProfileEditComponent,
     PostEditComponent,
+    UnderConstructionComponent,
   ],
   imports: [
     BrowserModule,

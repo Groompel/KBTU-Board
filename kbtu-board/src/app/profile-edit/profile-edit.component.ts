@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-profile-edit',
@@ -7,7 +9,18 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ProfileEditComponent implements OnInit {
 
-  constructor() {
+  profileInfo = new FormGroup({
+    name: new FormControl(),
+    year: new FormControl(),
+    faculty: new FormControl(),
+    about: new FormControl()
+  });
+
+  constructor(public authService: AuthService) {
+  }
+
+  submitForm() {
+    console.warn(this.profileInfo.value);
   }
 
   ngOnInit(): void {
