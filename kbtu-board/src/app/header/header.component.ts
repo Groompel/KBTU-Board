@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-declare const showProfileWindow: any;
-
+import { AuthService } from '../_services/auth.service';
+import { User } from '../_models/models';
+import { Router, ActivatedRoute, RoutesRecognized } from '@angular/router';
+import { first } from 'rxjs/operators';
+declare const $: any;
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,15 +12,46 @@ declare const showProfileWindow: any;
 export class HeaderComponent implements OnInit {
 
   profileWindowVisible = true;
+  isLoggedIn = false;
+  user;
+  showBg = true;
+
 
   toggleProfileWindow() {
-    showProfileWindow();
+    $(".profile-window").toggleClass("profile-window-show");
   }
 
-  constructor() {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+
+  ) {
+  }
+
+  logout() {
+    this.authService.logout();
+    location.reload(true);
   }
 
   ngOnInit(): void {
+    // To remove bg when on the main page
+    this.router.events.subscribe(event => {
+      if(this.authService.currentUserValue) {
+        this.isLoggedIn = true;
+        this.authService.currentUser.subscribe(data => {
+          this.user = data;
+          this.user = this.user.user;
+        });
+      }
+      if(event instanceof RoutesRecognized) {
+
+        if (event.url === "/") {
+          this.showBg = false;
+        } else {
+          this.showBg = true;
+        }
+      }
+    });
   }
 
 }

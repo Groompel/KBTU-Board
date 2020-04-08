@@ -23,10 +23,10 @@
           </div>
         </div>
         <div class="options-window">
-          <div class="select-option category-option" (click)="changeCategoryById(1)">Услуги</div>
-          <div class="select-option category-option" (click)="changeCategoryById(2)"><span>Потеряно и найдено</span>
+          <div class="select-option category-option" (click)="changeCategoryById(1, 'Услуги')">Услуги</div>
+          <div class="select-option category-option" (click)="changeCategoryById(2, 'Потеряно и найдено')"><span>Потеряно и найдено</span>
           </div>
-          <div class="select-option category-option" (click)="changeCategoryById(3)">Учеба</div>
+          <div class="select-option category-option" (click)="changeCategoryById(3, 'Учеба')">Учеба</div>
         </div>
       </div>
 
@@ -379,7 +379,7 @@
       </div>
     </div>
   </div>
-  <a routerLink="" class="all-ads-btn">
+  <a routerLink="/new" class="all-ads-btn">
     <span>Подать объявление</span>
     <!-- SVG arrow begin -->
     <svg class="arrow" viewBox="0 0 469.33333 469.33333" xmlns="http://www.w3.org/2000/svg">
@@ -504,7 +504,7 @@
 
   </div>
 
-  <a href="" class="all-ads-btn">
+  <a [routerLink]="'/search'"  [queryParams]="{query: '', category: 2, subcategory: 1}" class="all-ads-btn">
     <span>Все объявления</span>
     <!-- SVG arrow begin -->
     <svg class="arrow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -737,7 +737,7 @@
 
     </div>
   </div>
-  <a href="" class="all-ads-btn">
+  <a [routerLink]="'/search'"  [queryParams]="{query: '', category: 3, subcategory: 1}" class="all-ads-btn">
     <span>Все преподаватели</span>
     <!-- SVG arrow begin -->
     <svg class="arrow" style="enable-background:new 0 0 492.004 492.004;" version="1.1"
