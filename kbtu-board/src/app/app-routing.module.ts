@@ -21,7 +21,7 @@ export const ROUTES: Route[] = [
   {path: 'profile', component: ProfileComponent},
   {path: 'profile/edit', component: ProfileEditComponent},
   {path: ':sectionName/posts/:postId', component: PostDetailsComponent},
-  {path: 'new', component: NewPostComponent, canActivate: [AuthGuard]},
+  {path: 'new', component: NewPostComponent, canActivate:[AuthGuard]},
   {path: '**', component: ErrorPageComponent}
 ];
 
