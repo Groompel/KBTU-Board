@@ -10,7 +10,7 @@ import {SearchPageComponent} from './search-page/search-page.component';
 import {NewPostComponent} from './new-post/new-post.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ProfileEditComponent} from './profile-edit/profile-edit.component';
-import { AuthGuard } from './_guards/auth.guard';
+import {AuthGuard} from './_guards/auth.guard';
 
 export const ROUTES: Route[] = [
   {path: '', component: MainPageComponent},
@@ -21,7 +21,7 @@ export const ROUTES: Route[] = [
   {path: 'profile', component: ProfileComponent},
   {path: 'profile/edit', component: ProfileEditComponent},
   {path: ':sectionName/posts/:postId', component: PostDetailsComponent},
-  {path: 'new', component: NewPostComponent, canActivate:[AuthGuard]},
+  {path: 'new', component: NewPostComponent, canActivate: [AuthGuard]},
   {path: '**', component: ErrorPageComponent}
 ];
 
