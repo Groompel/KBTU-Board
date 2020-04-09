@@ -2,9 +2,14 @@
   <div class="container">
     <img src="assets/img/avatar.webp" alt="Avatar">
     <div id="profile-info">
-      <h3>Имя: {{user.name}}</h3>
-      <h3>Логин: {{user.login}}</h3>
-      <h3>Telegram: @{{user.telegram}}</h3>
+      <h3><b>Имя:</b> {{user.name}}</h3>
+      <h3><b>Логин:</b> {{user.username}}</h3>
+      <h3><b>Telegram:</b> @{{user.telegram_username}}</h3>
+      <blockquote *ngIf="user.info">
+        <h3 *ngIf="user.info.gender"><b>Пол:</b> {{user.getGender()}}</h3>
+        <h3 *ngIf="user.info.faculty">{{user.getFaculty()}}</h3>
+        <h3 *ngIf="user.info.rating"><b>Рейтинг преподавателя:</b> {{user.info.rating}}</h3>
+      </blockquote>
     </div>
   </div>
 
@@ -15,6 +20,7 @@
       <p>
         {{p.description}}
       </p>
+      <button (click)="postsService.removePost(p)">Удалить</button>
     </div>
   </div>
 </div>

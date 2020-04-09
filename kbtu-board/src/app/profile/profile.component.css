@@ -5,6 +5,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex-grow: 10;
+  flex-shrink: 10;
   width: 80%;
   margin: auto;
 }
@@ -13,28 +15,38 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 100%;
+  margin: 10px;
 }
 
 img {
-  width: 200px;
-  height: 200px;
+  width: 17%;
+  height: 17%;
+  margin: 10px;
 }
 
 #profile-info {
+  padding: 10px;
   display: flex;
   flex-direction: column;
+  width: 35%;
+}
+
+h3 {
+  margin: 2px;
+  font-weight: normal;
 }
 
 #posts {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
 }
 
-.post, #posts h1{
+.post, #posts h1 {
   width: 50%;
   margin: auto;
-
 }
 
 .post {
