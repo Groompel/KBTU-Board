@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import{FormGroup, FormControl} from '@angular/forms'
 
 @Component({
   selector: 'app-about-page',
@@ -7,7 +8,10 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AboutPageComponent implements OnInit {
 
+  reviewForm :FormGroup;
+
   constructor() {
+    this.reviewForm=new FormGroup({review:new FormControl('I think....')});
   }
 
   ngOnInit(): void {
