@@ -11,7 +11,7 @@ export class User {
   // poka chto budet path to file
 
   // tslint:disable-next-line:variable-name
-  constructor(username: string, password: string, name: string, telegram_username: string, info?: TeacherInfo) {
+  constructor(username: string, password: string, name: string, telegram_username: string, id?: number, info?: TeacherInfo) {
     this.username = username;
     this.password = password;
     this.name = name;
@@ -19,6 +19,8 @@ export class User {
     if (info) {
       this.info = info;
     }
+    this.id = id;
+
   }
 
   public getGender() {

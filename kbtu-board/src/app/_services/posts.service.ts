@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import {Post} from '../../mocks/post';
 import {POSTS} from '../../mocks/mock-posts';
 import {SECTIONS} from '../../mocks/mock-sections';
@@ -13,6 +13,8 @@ export class PostsService {
   }
 
   posts = POSTS.map(p => p);
+  postsSubject = new BehaviorSubject<Post[]>(POSTS);
+  userPostsSubject = new BehaviorSubject<Post[]>(POSTS);
 
   public getPostById(id: number): Observable<Post> {
     return of(this.posts.find(p => p.id === id));
@@ -27,10 +29,12 @@ export class PostsService {
   }
 
   public getUserPosts(userId: number): Observable<Post[]> {
-    return of(POSTS);
+    this.userPostsSubject.next(this.postsSubject.value.filter(p => p.user_id === userId));
+    return this.userPostsSubject;
   }
 
   public removePost(post: Post) {
-    return;
+    this.userPostsSubject.next(this.userPostsSubject.value.filter(p => p.id !== post.id));
+    this.postsSubject.next(this.postsSubject.value.filter(p => p.id !== post.id));
   }
 }

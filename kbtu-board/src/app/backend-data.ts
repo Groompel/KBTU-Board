@@ -176,9 +176,9 @@ export const BEST_TEACHERS = [
 export const AUTH_DATA = {};
 
 export const USERS: User[] = [
-  new User('jiklopo', '123456', 'Тимур Васильевич', 'jiklopo'),
-  new User('aggressive_deer', '123456', 'Алиса Весновская', 'alice123',
+  new User('jiklopo', '123456', 'Тимур Васильевич', 'jiklopo', 1),
+  new User('aggressive_deer', '123456', 'Алиса Весновская', 'alice123', 2,
     new TeacherInfo('fit', 2, 'f', ['Digital Design'], 'Печенье вкуснее с молоком.')),
-  new User('thugboykz', '123456', 'Мухаммед Невстровский', 'mukha3000',
+  new User('thugboykz', '123456', 'Мухаммед Невстровский', 'mukha3000', 3,
     new TeacherInfo('fit', 2, 'm', ['PP1', 'PP2', 'WebDev'], 'Ложка более универсальный инструмент, чем вилка.'))
 ];
