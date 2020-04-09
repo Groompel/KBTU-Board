@@ -48,11 +48,11 @@
         </div>
       </div>
 
-      <div class="content" formGroupName="study" id="study">
-        <input formControlName="subject" placeholder="Предмет" type="text">
-        <input formControlName="reward" placeholder="Вознаграждение" type="text">
-      </div>
       <button [disabled]="disableButton()" type="submit">Подать объявление</button>
     </form>
+    <div class="content" id="study">
+      <p>Для того, чтобы стать преподавателем, необходимо настроить профиль.</p>
+      <button routerLink="/profile/edit">Перейти</button>
+    </div>
   </div>
 </div>

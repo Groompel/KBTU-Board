@@ -22,13 +22,19 @@ export class User {
   }
 
   public getGender() {
-    return this.info.gender === 'm' ? 'Мужской' : 'Женский';
+    return this.info.gender === 'm' ? 'Сильный' : 'Прекрасный';
   }
 
   public getFaculty() {
     switch (this.info.faculty) {
       case 'fit':
-        return 'Факультет информационных технологий.';
+        return 'Факультет информационных технологий';
+      case 'bs':
+        return 'Бизнес школа';
+      case 'ise':
+        return 'Международная школа экономики';
+      default:
+        return 'Not implemented...';
     }
   }
 }

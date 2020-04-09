@@ -10,6 +10,7 @@
         <h3 *ngIf="user.info.faculty">{{user.getFaculty()}}</h3>
         <h3 *ngIf="user.info.rating"><b>Рейтинг преподавателя:</b> {{user.info.rating}}</h3>
       </blockquote>
+      <button routerLink="/profile/edit">Редактировать профиль</button>
     </div>
   </div>
 
@@ -20,7 +21,10 @@
       <p>
         {{p.description}}
       </p>
-      <button (click)="postsService.removePost(p)">Удалить</button>
+      <div class="post-buttons">
+        <button routerLink="/post/{{p.id}}/edit">Редактировать</button>
+        <button (click)="postsService.removePost(p)">Удалить</button>
+      </div>
     </div>
   </div>
 </div>

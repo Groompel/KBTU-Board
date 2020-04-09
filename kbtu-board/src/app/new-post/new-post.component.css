@@ -3,13 +3,17 @@
 
 #form-container {
   box-sizing: border-box;
-  width: fit-content;
+  width: 35%;
   margin: 3% auto 10% auto;
   font-size: 1.2em;
 }
 
 
 .tab {
+  display: flex;
+  flex-shrink: 3;
+  flex-grow: 3;
+  justify-content: center;
   overflow: hidden;
   border-radius: 5px 5px 0 0;
   background-color: var(--color-primary);
@@ -22,9 +26,10 @@
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 14px 16px;
+  padding: 14px;
   transition: 0.3s;
   font-size: 1.15em;
+  width: auto;
 }
 
 

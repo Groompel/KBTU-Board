@@ -133,5 +133,13 @@ export class NewPostComponent implements OnInit {
     this.lost.disable();
     this.help.disable();
     this.post.get(this.category).enable();
+    const form = document.getElementsByTagName('FORM').item(0);
+    if (category === 'study') {
+      // @ts-ignore
+      form.style.display = 'none';
+    } else {
+      // @ts-ignore
+      form.style.display = 'block';
+    }
   }
 }

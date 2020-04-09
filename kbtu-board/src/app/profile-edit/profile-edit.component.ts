@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {TeacherInfo, User} from '../_models/models';
 import {AuthMockService} from '../_services/auth-mock.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile-edit',
@@ -33,7 +34,8 @@ export class ProfileEditComponent implements OnInit {
         Validators.maxLength(150)])
   });
 
-  constructor(public authService: AuthMockService) {
+  constructor(public authService: AuthMockService,
+              private router: Router) {
   }
 
   get name() {
@@ -72,6 +74,8 @@ export class ProfileEditComponent implements OnInit {
       this.subjects.controls.map(c => c.value),
       this.quote.value);
     console.warn(this.user);
+    this.authService.setUser(this.user);
+    this.router.navigate(['/profile']);
   }
 
   ngOnInit(): void {
