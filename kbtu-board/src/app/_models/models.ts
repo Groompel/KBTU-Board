@@ -2,8 +2,17 @@ export class User {
   id?: number;
   token?: string;
   username: string;
-  password: string;
+  password?: string;
   name: string;
+  telegramId: string;
+  token?: string;
+  avatar: string;
+  constructor(username, name, telegramId, password = "12345678", avatar = "https://www.kindpng.com/picc/m/269-2697881_computer-icons-user-clip-art-transparent-png-icon.png") {
+    this.username = username;
+    this.password = password;
+    this.name = name;
+    this.telegramId = telegramId;
+    this.avatar = avatar;
   info: TeacherInfo;
   telegram_username: string;
   profile_photo: string;

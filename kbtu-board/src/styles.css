@@ -3,7 +3,7 @@
   --color-primary: #53c46d;
   --color-primary-light: #5cdf9e;
   --color-accent: #f5f555;
-  --color-black: #121212;
+  --color-black: #1d2233;
   --color-light-gray: #bbbbbb;
   --color-medium-gray: #7b7b7b;
   --color-dark-gray: #525252;
@@ -26,6 +26,7 @@
   outline: none;
   box-sizing: border-box;
   font-family: "Montserrat", serif;
+  color: var(--color-black);
 }
 
 

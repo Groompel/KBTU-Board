@@ -104,8 +104,6 @@ form.searchbar .query::placeholder {
 }
 .triangle-circle {
   margin-top: 3px;
-  /* background-color: rgb(199, 199, 199);
-  border-radius: 50%; */
 }
 
 .triangle-clicked svg {
@@ -259,13 +257,13 @@ form.searchbar .query::placeholder {
   font-weight: 600;
 }
 
-.header .all-ads-btn {
+.header .all-posts-btn {
   margin: 50px auto 10px;
   background-color: transparent;
   color: var(--color-accent);
 }
 
-.header .all-ads-btn:hover .arrow {
+.header .all-posts-btn:hover .arrow {
   fill: var(--color-accent);
   margin-bottom: 2px;
 }
@@ -290,14 +288,14 @@ form.searchbar .query::placeholder {
   width: 100%;
 }
 
-.ads-container {
+.posts-container {
   margin: 20px auto 20px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 }
 
-.ads-card-container {
+.posts-card-container {
   width: 90%;
   margin: 0 auto;
   margin-top: 20px;
@@ -308,7 +306,7 @@ form.searchbar .query::placeholder {
   overflow: hidden;
 }
 
-.ads-card {
+.posts-card {
   width: 100%;
   max-height: 48px;
   padding: 0px 20px 10px;
@@ -316,20 +314,20 @@ form.searchbar .query::placeholder {
   transition: all 0.6s ease-out;
 }
 
-.ads-card:not(.ads-card-shown):hover {
+.posts-card:not(.posts-card-shown):hover {
   background-color: #f5f5f5;
 }
 
-.ads-card:not(:last-child) {
+.posts-card:not(:last-child) {
   border-bottom: 1px solid var(--border-color-gray);
 }
 
-.ads-card-shown {
+.posts-card-shown {
   transition: all 0.6s ease-in;
   max-height: 550px;
 }
 
-.ads-card-header {
+.posts-card-header {
   position: relative;
   display: flex;
   align-items: center;
@@ -338,33 +336,33 @@ form.searchbar .query::placeholder {
   cursor: pointer;
 }
 
-.ads-card-title {
+.posts-card-title {
   font-size: 1.5rem;
   width: 90%;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.ads-card-shown .ads-card-title {
+.posts-card-shown .posts-card-title {
   white-space: pre-line;
 }
 
-.ads-card-header .triangle {
+.posts-card-header .triangle {
   padding-right: 0;
 }
 
-.ads-card-body {
+.posts-card-body {
   display: flex;
 }
 
-.ads-card-image {
+.posts-card-image {
   margin-right: 20px;
   flex: 0 0 30%;
   min-width: 200px;
   align-items: flex-start;
 }
 
-.ads-image-cover {
+.posts-image-cover {
   border-radius: 20px;
   overflow: hidden;
   display: flex;
@@ -372,35 +370,35 @@ form.searchbar .query::placeholder {
   align-items: center;
 }
 
-.ads-card-image img {
+.posts-card-image img {
   pointer-events: none;
   width: 100%;
 }
 
-.ads-card-description {
+.posts-card-description {
   position: relative;
   flex: 0 1 70%;
   padding: 0 40px 50px 0;
 
 }
 
-.ads-card-field-name {
+.posts-card-field-name {
   font-size: 1.1rem;
   font-weight: 600;
   line-height: 1.25rem;
 }
-.ads-card-field-data {
+.posts-card-field-data {
   font-size: 1.05rem;
   margin-bottom: 10px;
   color: var(--color-dark-gray);
 }
 
-.ads-card-field-data.data-desc {
+.posts-card-field-data.data-desc {
   height: 60%;
   overflow: scroll;
 }
 
-.ads-card .telegram-contact-btn {
+.posts-card .telegram-contact-btn {
   font-size: 1.25rem;
   font-weight: 600;
   padding: 6px 0;
@@ -415,7 +413,7 @@ form.searchbar .query::placeholder {
   margin: 20px 0 40px;
 }
 
-.all-ads-btn {
+.all-posts-btn {
   background-color: var(--color-accent);
   color: var(--color-black);
   border-radius: var(--border-btn-radius);
@@ -432,11 +430,11 @@ form.searchbar .query::placeholder {
   position: relative;
 }
 
-.all-ads-btn:hover .arrow {
+.all-posts-btn:hover .arrow {
   width: 25px;
   fill: var(--color-black);
 }
-.all-ads-btn .arrow {
+.all-posts-btn .arrow {
   width: 0;
   margin-left: 10px;
   margin-top: 3px;
@@ -680,13 +678,13 @@ form.searchbar .query::placeholder {
   fill: #fff;
 }
 
-.top-teachers .all-ads-btn {
+.top-teachers .all-posts-btn {
   background-color: transparent;
   border: 2px solid var(--color-accent);
   color: var(--color-accent);
 }
 
-.top-teachers .all-ads-btn .arrow {
+.top-teachers .all-posts-btn .arrow {
   fill: var(--color-accent);
 }
 
@@ -716,19 +714,19 @@ form.searchbar .query::placeholder {
     font-size: 1.125rem;
   }
 
-  .ads-card {
+  .posts-card {
     max-height: 43px;
   }
 
-  .ads-card-shown {
+  .posts-card-shown {
     max-height: 500px;
   }
 
-  .ads-card-title {
+  .posts-card-title {
     font-size: 1.25rem;
   }
 
-  .ads-card-field-data.data-desc {
+  .posts-card-field-data.data-desc {
     height: 40%;
   }
 }
@@ -790,41 +788,41 @@ form.searchbar .query::placeholder {
     border-radius: 0 0 22.5px 22.5px;
   }
 
-  .ads-card-title {
+  .posts-card-title {
     font-size: 1.125rem;
   }
 
-  .ads-card-field-name,
-  .ads-card-field-data {
+  .posts-card-field-name,
+  .posts-card-field-data {
     font-size: 0.875rem;
   }
 
-  .ads-card-description {
+  .posts-card-description {
     padding: 0 50px 0 0;
   }
 
-  .ads-card-field-data.data-desc {
+  .posts-card-field-data.data-desc {
     height: 65%;
   }
-  .ads-card .telegram-contact-btn {
+  .posts-card .telegram-contact-btn {
     right: 0;
     left: auto;
     font-size: 1.125rem;
     width: 40px;
   }
 
-  .ads-card .telegram-contact-btn svg {
+  .posts-card .telegram-contact-btn svg {
     margin: 0;
   }
 
-  .ads-card .telegram-contact-btn .text {
+  .posts-card .telegram-contact-btn .text {
     display: none;
   }
 
 }
 
 @media screen and (max-width: 630px) {
-  .ads-card-image img {
+  .posts-card-image img {
     width: 150%;
   }
 }
@@ -865,30 +863,33 @@ form.searchbar .query::placeholder {
     font-size: 2.2rem;
   }
 
-  .ads-card-container {
+  .posts-card-container {
     width: 100%;
 
   }
 
-  .ads-card-body {
+  .posts-card-body {
     flex-wrap: wrap;
   }
 
-  .ads-card-image {
+  .posts-card-image {
     flex: 0 1 65%;
     margin: 0 10px 10px 0;
   }
 
-  .ads-card-description {
+  .posts-card-description {
     flex: 1 1 100%;
   }
 
   /* CTA Buttons */
-  .all-ads-btn {
+  .all-posts-btn {
     width: 350px;
     font-size: 1.3rem;
   }
-  .all-ads-btn:hover .arrow {
+  .all-posts-btn span {
+    color: #fff
+  }
+  .all-posts-btn:hover .arrow {
     margin-left: 5px;
     width: 20px;
   }
@@ -952,37 +953,37 @@ form.searchbar .query::placeholder {
 
 
 
-  .ads-card {
+  .posts-card {
     padding: 0 8px;
   }
 
-  .ads-card-image {
+  .posts-card-image {
     margin: 0 auto 10px;
   }
 
-  .ads-card-description {
+  .posts-card-description {
     padding: 0 0 50px 0;
   }
 
-  .ads-card .telegram-contact-btn {
+  .posts-card .telegram-contact-btn {
     width: 100%;
   }
 
-  .ads-card .telegram-contact-btn svg {
+  .posts-card .telegram-contact-btn svg {
     margin-right: 5px;
   }
 
-  .ads-card .telegram-contact-btn .text {
+  .posts-card .telegram-contact-btn .text {
     display: block;
   }
 
   /* CTA Buttons */
-  .all-ads-btn {
+  .all-posts-btn {
     min-width: 240px;
     max-width: 100%;
     font-size: 1.125rem;
   }
-  .all-ads-btn:hover .arrow {
+  .all-posts-btn:hover .arrow {
     width: 15px;
   }
 }
