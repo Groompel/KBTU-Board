@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
 import {AuthService} from '../_services/auth.service';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {TeacherInfo, User} from '../_models/models';

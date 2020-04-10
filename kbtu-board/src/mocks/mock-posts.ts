@@ -1,5 +1,6 @@
 import {Post} from './post';
 import { User } from 'src/app/_models/models';
+import { USERS } from 'src/app/backend-data';
 
 //TODO: DOfiga chego
 export const POSTS: {[key: string]: Post[]} = {
@@ -13,7 +14,7 @@ export const POSTS: {[key: string]: Post[]} = {
     views: 0,
     img: "https://picsum.photos/200/300",
     date: new Date(),
-    user: new User("thugboikz", "Мухаммед", "1234567"),
+    user: USERS[1]
   },
   {
     id: 2,
@@ -21,12 +22,12 @@ export const POSTS: {[key: string]: Post[]} = {
     title: 'Принести зарядку с общаги',
     description: 'Laborum minim culpa et exercitation ea do do sit voluptate duis culpa.',
     user_id: 2,
-    description: 'Pusto',
     reward: 'Nothing, haha',
     views: 0,
     img: "https://picsum.photos/300/300",
     date: new Date(2020, 3, 4, 2, 4),
-    user: new User("thugboikz", "Мухаммед", "1234567"),
+    user: USERS[1]
+
   },
   {
     id: 3,
@@ -36,7 +37,8 @@ export const POSTS: {[key: string]: Post[]} = {
     reward: 'Nothing, haha',
     views: 10,
     date: new Date(2019, 8, 19, 18, 28),
-    user: new User("thugboikz", "Мухаммед", "1234567"),
+    user: USERS[1]
+
 
   },
   {
@@ -48,7 +50,8 @@ export const POSTS: {[key: string]: Post[]} = {
     views: 0,
     date: new Date(),
     img: "https://picsum.photos/200/200",
-    user: new User("thugboikz", "Мухаммед", "1234567"),
+    user: USERS[1]
+
 
   },
   {
@@ -60,7 +63,8 @@ export const POSTS: {[key: string]: Post[]} = {
     views: 0,
     date: new Date(),
     img: "https://picsum.photos/500/300",
-    user: new User("thugboikz", "Мухаммед", "1234567"),
+    user: USERS[1]
+
   },
   ],
   lostAndFound: [
