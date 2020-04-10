@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {PostsService} from '../_services/posts.service';
+import {Post} from "../../mocks/post";
+import {AuthMockService} from "../_services/auth-mock.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-post',
@@ -8,7 +12,10 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class NewPostComponent implements OnInit {
 
-  constructor() {
+  constructor(
+    private postsService: PostsService,
+    private authService: AuthMockService,
+    private router: Router) {
   }
 
   category = '';
@@ -101,7 +108,16 @@ export class NewPostComponent implements OnInit {
   }
 
   submitForm() {
-    console.warn(this.post.value);
+    const post: Post = {
+      user_id: this.authService.currentUser.value.id,
+      description: this.description.value,
+      header: this.head.value,
+      id: this.postsService.generatePostId(),
+      reward: '',
+      views: 0
+    };
+    this.postsService.createPost(post);
+    this.router.navigate(['/profile']);
   }
 
   ngOnInit()
@@ -133,5 +149,13 @@ export class NewPostComponent implements OnInit {
     this.lost.disable();
     this.help.disable();
     this.post.get(this.category).enable();
+    const form = document.getElementsByTagName('FORM').item(0);
+    if (category === 'study') {
+      // @ts-ignore
+      form.style.display = 'none';
+    } else {
+      // @ts-ignore
+      form.style.display = 'block';
+    }
   }
 }

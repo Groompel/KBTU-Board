@@ -1,6 +1,7 @@
 import {Post} from './post';
 import { User } from 'src/app/_models/models';
 
+//TODO: DOfiga chego
 export const POSTS: {[key: string]: Post[]} = {
   help: [
     {
@@ -19,6 +20,8 @@ export const POSTS: {[key: string]: Post[]} = {
     subcategoryId: 1,
     title: 'Принести зарядку с общаги',
     description: 'Laborum minim culpa et exercitation ea do do sit voluptate duis culpa.',
+    user_id: 2,
+    description: 'Pusto',
     reward: 'Nothing, haha',
     views: 0,
     img: "https://picsum.photos/300/300",

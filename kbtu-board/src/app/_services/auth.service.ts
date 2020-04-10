@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { User } from '../_models/models';
-
+import {HttpClient} from '@angular/common/http';
+import {environment} from 'src/environments/environment';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {User} from '../_models/models';
 
 
 @Injectable({
@@ -14,7 +13,6 @@ import { User } from '../_models/models';
 export class AuthService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
-  user: boolean;
 
   constructor(
     private router: Router,
@@ -53,13 +51,5 @@ export class AuthService {
   logout() {
     localStorage.removeItem("currentUser");
     this.currentUserSubject.next(null);
-  }
-
-  redirect(route: string) {
-    if (this.user) {
-      this.router.navigate([route]);
-    } else {
-      this.router.navigate(['/auth']);
-    }
   }
 }

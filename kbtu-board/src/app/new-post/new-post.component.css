@@ -10,11 +10,14 @@
 
 
 .tab {
+  display: flex;
+  flex-shrink: 3;
+  flex-grow: 3;
+  justify-content: center;
   overflow: hidden;
   border-radius: 5px 5px 0 0;
   background-color: var(--color-primary);
 }
-
 
 .tab button {
   background-color: inherit;
@@ -22,19 +25,16 @@
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 14px 16px;
+  padding: 14px;
   transition: 0.3s;
   font-size: 1.15em;
+  width: auto;
 }
 
 
 .tab button:hover {
   background-color: var(--color-accent);
-}
-
-
-.tab button.active {
-  background-color: var(--color-accent);
+  color: var(--color-black)
 }
 
 
@@ -81,9 +81,21 @@ input, .tabcontent button, select {
 .tabcontent button {
   background-color: var(--color-primary);
   border: 1px solid var(--border-color-gray);
+  transition: 0.3s;
+  height: auto;
 }
 
 
 .tabcontent button:hover {
   background-color: var(--color-accent);
+  color: var(--color-black)
+}
+
+.tabcontent button:disabled {
+  background-color: var(--color-light-gray);
+  color: var(--color-dark-gray);
+}
+
+button {
+  color: white;
 }

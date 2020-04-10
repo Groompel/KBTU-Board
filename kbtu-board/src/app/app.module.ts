@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 import {AppComponent} from './app.component';
@@ -14,12 +14,12 @@ import {AuthComponent} from './auth/auth.component';
 import {NewPostComponent} from './new-post/new-post.component';
 import {AboutPageComponent} from './about-page/about-page.component';
 import {SearchPageComponent} from './search-page/search-page.component';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ProfileComponent} from './profile/profile.component';
 import {ProfileEditComponent} from './profile-edit/profile-edit.component';
 import {PostEditComponent} from './post-edit/post-edit.component';
-import { JwtInterceptor } from './_interceptors/jwt.interceptor';
-import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import {JwtInterceptor} from './_interceptors/jwt.interceptor';
+import {ErrorInterceptor} from './_interceptors/error.interceptor';
 import {UnderConstructionComponent} from './under-construction/under-construction.component';
 
 @NgModule({
@@ -44,10 +44,11 @@ import {UnderConstructionComponent} from './under-construction/under-constructio
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

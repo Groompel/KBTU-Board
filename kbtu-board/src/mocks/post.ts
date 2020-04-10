@@ -10,4 +10,5 @@ export interface Post {
   date: Date;
   user: User;
   img?: string;
+  //TODO: user_id field
 }

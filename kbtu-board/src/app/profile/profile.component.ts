@@ -1,4 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {PostsService} from '../_services/posts.service';
+import {Post} from '../../mocks/post';
+import {User} from '../_models/models';
+import {AuthMockService} from '../_services/auth-mock.service';
 
 
 @Component({
@@ -8,10 +12,17 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() {
+  posts: Post[];
+  user: User;
+
+  constructor(
+    public postsService: PostsService,
+    public authService: AuthMockService) {
   }
 
   ngOnInit(): void {
+    this.authService.currentUser.subscribe(u => this.user = u);
+    this.postsService.getUserPosts(this.user.id).subscribe(p => this.posts = p);
   }
 
 }

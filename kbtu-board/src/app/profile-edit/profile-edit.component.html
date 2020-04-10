@@ -1,37 +1,65 @@
-<div *ngIf="authService.user" class="profile">
+<div *ngIf="user" id="profile-form">
   <form (ngSubmit)="submitForm()" [formGroup]="profileInfo">
-    <div class="field-container">
-      <label for="name">Имя:</label>
+    <div class="form-element">
+      <label for="name">
+        Имя:
+      </label>
       <input formControlName="name" id="name" type="text">
     </div>
 
-    <div class="field-container">
-      <label for="year">Год поступления:</label>
-      <input formControlName="year" id="year" type="number">
-
-      <label for="faculty">Факультет</label>
-      <select formControlName="faculty" id="faculty">
-        <option value="fit">ФИТ</option>
-        <option value="mkm">МКМ</option>
-        <option value="ise">МШЭ</option>
-        <option value="bs">БШ</option>
-        <option value="sce">НОЦХИ</option>
-        <option value="feogi">ФЭНГИ</option>
-        <option value="kma">КМА</option>
+    <div class="form-element">
+      <label for="gender">
+        Пол:
+      </label>
+      <select formControlName="gender" id="gender">
+        <option value="m">Сильный</option>
+        <option value="f">Прекрасный</option>
       </select>
     </div>
 
-    <div class="field-container">
-      <label for="about">О себе:</label>
-      <input formControlName="about" id="about" type="text">
+    <div class="form-element">
+      <label for="faculty">
+        Факультет:
+      </label>
+      <select formControlName="faculty" id="faculty">
+        <option value="fit">ФИТ</option>
+        <option value="smc">МКМ</option>
+        <option value="fgge">Геология</option>
+        <option value="feogi">ФЭНГИ</option>
+        <option value="ise">МШЭ</option>
+        <option value="bs">БШ</option>
+        <option value="kma">КМА</option>
+      </select>
+      <div *ngIf="!faculty.valid" class="errors">
+        Заполните это поле
+      </div>
     </div>
 
-    <div class="field-container">
-      <button type="submit">Сохранить</button>
+    <div class="form-element" id="input-for-year">
+      <label for="year" id="label-for-year">
+        Год обучения:
+      </label>
+      <input formControlName="year" id="year" max="5" min="1" type="number">
+    </div>
+
+    <div class="form-element">
+      <label>Ваши предметы:</label>
+      <div *ngFor="let subject of subjects.controls" class="subject">
+        <input [formControl]="subject" type="text">
+        <button (click)="subjects.removeAt(subjects.controls.indexOf(subject))">Удалить</button>
+      </div>
+      <button (click)="addSubject('')" type="button">Добавить предмет</button>
+    </div>
+
+    <div class="form-element">
+      <label for="quote">
+        Ваша любимая цитата:
+      </label>
+      <textarea cols="35" formControlName="quote" id="quote" rows="5"></textarea>
+    </div>
+
+    <div class="form-element">
+      <button [disabled]="!profileInfo.valid" type="submit">Стать преподавателем</button>
     </div>
   </form>
-</div>
-
-<div *ngIf="!authService.user" class="profile">
-  <h1>Похоже, что вам надо <u><a routerLink="/auth">войти или зарегестрироваться!</a></u></h1>
 </div>
