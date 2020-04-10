@@ -1,36 +1,34 @@
 export class User {
   id?: number;
-  token?: string;
   username: string;
   password?: string;
   name: string;
   telegramId: string;
+  telegram_username: string;
   token?: string;
   avatar: string;
-  constructor(username, name, telegramId, password = "12345678", avatar = "https://www.kindpng.com/picc/m/269-2697881_computer-icons-user-clip-art-transparent-png-icon.png") {
+  info: TeacherInfo;
+  constructor(username, password = "12345678", name, telegramId, id?: number, info?: TeacherInfo) {
     this.username = username;
     this.password = password;
     this.name = name;
     this.telegramId = telegramId;
-    this.avatar = avatar;
-  info: TeacherInfo;
-  telegram_username: string;
-  profile_photo: string;
-
-  // poka chto budet path to file
-
-  // tslint:disable-next-line:variable-name
-  constructor(username: string, password: string, name: string, telegram_username: string, id?: number, info?: TeacherInfo) {
-    this.username = username;
-    this.password = password;
-    this.name = name;
-    this.telegram_username = telegram_username;
+    this.avatar = "https://www.kindpng.com/picc/m/269-2697881_computer-icons-user-clip-art-transparent-png-icon.png";
     if (info) {
       this.info = info;
     }
     this.id = id;
 
   }
+  // poka chto budet path to file
+
+  // tslint:disable-next-line:variable-name
+  // constructor(username: string, password: string, name: string, telegram_username: string, id?: number, info?: TeacherInfo) {
+  //   this.username = username;
+  //   this.password = password;
+  //   this.name = name;
+  //   this.telegram_username = telegram_username;
+  // }
 
   public getGender() {
     return this.info.gender === 'm' ? 'Сильный' : 'Прекрасный';

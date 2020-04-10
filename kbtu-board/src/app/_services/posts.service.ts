@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {Post} from '../../mocks/post';
 import {POSTS} from '../../mocks/mock-posts';
-import {SECTIONS} from '../../mocks/mock-sections';
 
 @Injectable({
   providedIn: 'root'
@@ -13,48 +11,38 @@ export class PostsService {
   constructor() {
   }
 
-  public getPostById(id: number, categoryId: number): Observable<any> {
-    const posts = this.getCategory(categoryId);
-    if (!posts) {
-      return of(false);
-    }
-    return of(posts.find(p => p.id === id));
-  }
-
   public getPostsByCategoryId(categoryId: number, subcategoryId): Observable<any> {
 
-    const posts = this.getCategory(categoryId);
-    if (!posts) {
-      return of(false);
-    }
+    // const posts = this.getCategory(categoryId);
+    // if (!posts) {
+    //   return of(false);
+    // }
 
-
-    return of(posts.filter(post => post.subcategoryId === subcategoryId));
+    // return of(posts.filter(post => post.subcategoryId === subcategoryId));
+    return of(false);
   }
 
   getCategory(categoryId) {
-    if (categoryId === 1) {
-      return POSTS.help;
-    } else if (categoryId === 2) {
-      return POSTS.lostAndFound;
-    } else if (categoryId === 3) {
-      return POSTS.study;
-    } else {
-      return false;
-    }
+    // if (categoryId === 1) {
+    //   return POSTS.help;
+    // } else if (categoryId === 2) {
+    //   return POSTS.lostAndFound;
+    // } else if (categoryId === 3) {
+    //   return POSTS.study;
+    // } else {
+    //   return false;
+    // }
+    return of(false);
   }
 
-  posts = POSTS.map(p => p);
-  postsSubject = new BehaviorSubject<Post[]>(POSTS);
-  userPostsSubject = new BehaviorSubject<Post[]>(POSTS);
+  posts = POSTS.help.map(p => p);
+  postsSubject = new BehaviorSubject<Post[]>(POSTS.help);
+  userPostsSubject = new BehaviorSubject<Post[]>(POSTS.help);
 
   public getPostById(id: number): Observable<Post> {
     return of(this.postsSubject.value.find(p => p.id === id));
   }
 
-  public getPostsBySectionId(sectionId: number): Observable<Post[]> {
-    return of(this.posts.filter(post => SECTIONS.find(sec => sec.sectionId === sectionId).postIdList.includes(post.id)));
-  }
 
   public getAllPosts(): Observable<Post[]> {
     return of(this.posts);
