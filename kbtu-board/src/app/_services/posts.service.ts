@@ -17,7 +17,7 @@ export class PostsService {
   userPostsSubject = new BehaviorSubject<Post[]>(POSTS);
 
   public getPostById(id: number): Observable<Post> {
-    return of(this.posts.find(p => p.id === id));
+    return of(this.postsSubject.value.find(p => p.id === id));
   }
 
   public getPostsBySectionId(sectionId: number): Observable<Post[]> {
@@ -36,5 +36,33 @@ export class PostsService {
   public removePost(post: Post) {
     this.userPostsSubject.next(this.userPostsSubject.value.filter(p => p.id !== post.id));
     this.postsSubject.next(this.postsSubject.value.filter(p => p.id !== post.id));
+  }
+
+  public createPost(post: Post) {
+    let arr = this.postsSubject.value;
+    arr.push(post);
+    this.postsSubject.next(arr);
+    arr = this.userPostsSubject.value;
+    arr.push(post);
+    this.userPostsSubject.next(arr);
+    console.warn(this.userPostsSubject.value);
+  }
+
+  public savePost(post: Post) {
+    let arr = this.userPostsSubject.value.filter(p => p.id !== post.id);
+    arr.push(post);
+    this.userPostsSubject.next(arr);
+    arr = this.postsSubject.value.filter(p => p.id !== post.id);
+    arr.push(post);
+    this.postsSubject.next(arr);
+  }
+
+  public generatePostId() {
+    let id: number;
+    do {
+      id = Math.floor(Math.random() * 1000);
+    }
+    while (this.postsSubject.value.find(p => p.id === id));
+    return id;
   }
 }

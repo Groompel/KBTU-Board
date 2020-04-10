@@ -88,3 +88,8 @@ button:hover {
   background-color: var(--color-accent);
   color: var(--color-black);
 }
+
+#profile-info button {
+  font-size: 18px;
+  padding: 3px;
+}

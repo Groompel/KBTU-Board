@@ -22,7 +22,7 @@
         {{p.description}}
       </p>
       <div class="post-buttons">
-        <button routerLink="/post/{{p.id}}/edit">Редактировать</button>
+        <button routerLink="/posts/{{p.id}}/edit">Редактировать</button>
         <button (click)="postsService.removePost(p)">Удалить</button>
       </div>
     </div>

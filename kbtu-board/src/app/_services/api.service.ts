@@ -37,7 +37,7 @@ export class ApiService {
   }
 
   isAvailableUsername(username) {
-    const usernames = USERS.map(u => u.name);
-    return usernames.includes(username);
+    const usernames = USERS.map(u => u.username);
+    return !usernames.includes(username);
   }
 }
