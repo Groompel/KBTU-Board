@@ -37,12 +37,14 @@
 }
 
 .footer-logo {
+  color: #fff;
   font-size: 40px;
   line-height: 33px;
   font-weight: 700;
 }
 
 .footernok-title {
+  color: #fff;
   text-align: left;
   font-size: 20px;
 }

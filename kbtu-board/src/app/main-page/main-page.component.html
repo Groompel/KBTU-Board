@@ -379,7 +379,7 @@
       </div>
     </div>
   </div>
-  <a routerLink="/new" class="all-ads-btn">
+  <a routerLink="/new" class="all-posts-btn">
     <span>Подать объявление</span>
     <!-- SVG arrow begin -->
     <svg class="arrow" viewBox="0 0 469.33333 469.33333" xmlns="http://www.w3.org/2000/svg">
@@ -405,13 +405,13 @@
   </div>
   <h1 class="large-heading">Последние объявления</h1>
 
-  <div class="ads-container">
+  <div class="posts-container">
     <div class="lost">
       <h3 class="small-heading">Потеряно</h3>
-      <div class="ads-card-container">
-        <div class="ads-card" data-id="{{ ad.id }}" *ngFor="let ad of lastAds.lost">
-          <div class="ads-card-header" (click)="showAd(ad.id, 'lost')">
-            <p class="ads-card-title">{{ ad.title }}</p>
+      <div class="posts-card-container">
+        <div class="posts-card" data-id="{{ ad.id }}" *ngFor="let ad of lastAds.lost">
+          <div class="posts-card-header" (click)="showAd(ad.id, 'lost')">
+            <p class="posts-card-title">{{ ad.title }}</p>
             <div class="triangle">
               <svg xmlns="http://www.w3.org/2000/svg" width="23.81" height="14.102" viewBox="0 0 23.81 14.102">
                 <g id="dropdown-btn" data-name=" dropdown-btn" transform="translate(1.09 1.09)">
@@ -423,17 +423,17 @@
               </svg>
             </div>
           </div>
-          <div class="ads-card-body">
-            <div class="ads-card-image">
-              <div class="ads-image-cover">
+          <div class="posts-card-body">
+            <div class="posts-card-image">
+              <div class="posts-image-cover">
                 <img src="https://picsum.photos/200" alt="картинка объявления">
               </div>
             </div>
-            <div class="ads-card-description">
-              <p class="ads-card-field-name">Дата:</p>
-              <p class="ads-card-field-data">{{ ad.date.start + "-" + ad.date.end }}</p>
-              <p class="ads-card-field-name">Описание:</p>
-              <p class="ads-card-field-data data-desc">{{ ad.description }}</p>
+            <div class="posts-card-description">
+              <p class="posts-card-field-name">Дата:</p>
+              <p class="posts-card-field-data">{{ ad.date.start + "-" + ad.date.end }}</p>
+              <p class="posts-card-field-name">Описание:</p>
+              <p class="posts-card-field-data data-desc">{{ ad.description }}</p>
 
 
               <a class="telegram-contact-btn" href="/">
@@ -455,10 +455,10 @@
     </div>
     <div class="found">
       <h3 class="small-heading">Найдено</h3>
-      <div class="ads-card-container">
-        <div class="ads-card" data-id="{{ ad.id }}" *ngFor="let ad of lastAds.found">
-          <div class="ads-card-header" (click)="showAd(ad.id, 'found')">
-            <p class="ads-card-title">{{ ad.title }}</p>
+      <div class="posts-card-container">
+        <div class="posts-card" data-id="{{ ad.id }}" *ngFor="let ad of lastAds.found">
+          <div class="posts-card-header" (click)="showAd(ad.id, 'found')">
+            <p class="posts-card-title">{{ ad.title }}</p>
             <div class="triangle">
               <svg xmlns="http://www.w3.org/2000/svg" width="23.81" height="14.102" viewBox="0 0 23.81 14.102">
                 <g id="dropdown-btn" data-name=" dropdown-btn" transform="translate(1.09 1.09)">
@@ -470,17 +470,17 @@
               </svg>
             </div>
           </div>
-          <div class="ads-card-body">
-            <div class="ads-card-image">
-              <div class="ads-image-cover">
+          <div class="posts-card-body">
+            <div class="posts-card-image">
+              <div class="posts-image-cover">
                 <img src="https://picsum.photos/200" alt="картинка объявления">
               </div>
             </div>
-            <div class="ads-card-description">
-              <p class="ads-card-field-name">Дата:</p>
-              <p class="ads-card-field-data">{{ ad.date.start + "-" + ad.date.end }}</p>
-              <p class="ads-card-field-name">Описание:</p>
-              <p class="ads-card-field-data">{{ ad.description }}</p>
+            <div class="posts-card-description">
+              <p class="posts-card-field-name">Дата:</p>
+              <p class="posts-card-field-data">{{ ad.date.start + "-" + ad.date.end }}</p>
+              <p class="posts-card-field-name">Описание:</p>
+              <p class="posts-card-field-data">{{ ad.description }}</p>
 
 
               <a class="telegram-contact-btn" href="/">
@@ -504,7 +504,7 @@
 
   </div>
 
-  <a [routerLink]="'/search'"  [queryParams]="{query: '', category: 2, subcategory: 1}" class="all-ads-btn">
+  <a [routerLink]="'/search'"  [queryParams]="{query: '', category: 2, subcategory: 1}" class="all-posts-btn">
     <span>Все объявления</span>
     <!-- SVG arrow begin -->
     <svg class="arrow" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -737,7 +737,7 @@
 
     </div>
   </div>
-  <a [routerLink]="'/search'"  [queryParams]="{query: '', category: 3, subcategory: 1}" class="all-ads-btn">
+  <a [routerLink]="'/search'"  [queryParams]="{query: '', category: 3, subcategory: 1}" class="all-posts-btn">
     <span>Все преподаватели</span>
     <!-- SVG arrow begin -->
     <svg class="arrow" style="enable-background:new 0 0 492.004 492.004;" version="1.1"

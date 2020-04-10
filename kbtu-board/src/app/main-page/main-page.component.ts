@@ -10,17 +10,9 @@ import {
   cantBeZeroValidator,
 } from "../_shared/main-page-validators";
 import { Router } from "@angular/router";
-declare const changeSubcategories: any;
-declare const initMainPage: any;
-declare const showCategoryWindow: any;
-declare const showSubcategoryWindow: any;
-declare const searchSubmitCheck: any;
-declare const showAd: any;
-declare const removeBgFromNavbar: any;
 declare const $: any;
 @Component({
   selector: "app-main-page",
-  encapsulation: ViewEncapsulation.None,
   templateUrl: "./main-page.component.html",
   styleUrls: ["./main-page.component.css"],
 })
@@ -97,15 +89,15 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   // Show lost and found ad
   showAd(id, adType) {
-    $(`.${adType} .ads-card`).each((index) => {
-      let ad = $(`.${adType} .ads-card`)[index];
+    $(`.${adType} .posts-card`).each((index) => {
+      let ad = $(`.${adType} .posts-card`)[index];
       ad = $(ad);
 
       if (parseInt(ad.attr("id")) === id) {
-        ad.toggleClass("ads-card-shown");
+        ad.toggleClass("posts-card-shown");
         ad.find(".triangle").toggleClass("triangle-clicked");
       } else {
-        ad.removeClass("ads-card-shown");
+        ad.removeClass("posts-card-shown");
       }
     });
   }
@@ -193,14 +185,13 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngAfterViewInit(): void {
-
     this.profileWindow = $(".profile-window");
     this.categorySelect = $("#category-select");
     this.subcategorySelect = $("#subcategory-select");
     this.searchbarForm = $("form.searchbar");
     this.ads = {
-      lost: $(".ads-container .lost .ads-card-container .ads-card"),
-      found: $(".ads-container .found .ads-card-container .ads-card"),
+      lost: $(".posts-container .lost .posts-card-container .posts-card"),
+      found: $(".posts-container .found .posts-card-container .posts-card"),
     };
   }
 
