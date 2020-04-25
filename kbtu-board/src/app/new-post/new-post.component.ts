@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PostsService} from '../_services/posts.service';
 import {Post} from "../../mocks/post";
-import {AuthMockService} from "../_services/auth-mock.service";
+import {AuthService} from "../_services/auth.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -14,7 +14,7 @@ export class NewPostComponent implements OnInit {
 
   constructor(
     private postsService: PostsService,
-    private authService: AuthMockService,
+    private authService: AuthService,
     private router: Router) {
   }
 
@@ -109,7 +109,7 @@ export class NewPostComponent implements OnInit {
 
   submitForm() {
     const post: Post = {
-      user_id: this.authService.currentUser.value.id,
+      // user_id: this.authService.currentUser.value.id,
       description: this.description.value,
       header: this.head.value,
       id: this.postsService.generatePostId(),

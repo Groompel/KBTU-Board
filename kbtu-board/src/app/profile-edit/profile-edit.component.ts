@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../_services/auth.service';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {TeacherInfo, User} from '../_models/models';
-import {AuthMockService} from '../_services/auth-mock.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -35,7 +34,7 @@ export class ProfileEditComponent implements OnInit {
         Validators.maxLength(150)])
   });
 
-  constructor(public authService: AuthMockService,
+  constructor(public authService: AuthService,
               private router: Router) {
   }
 

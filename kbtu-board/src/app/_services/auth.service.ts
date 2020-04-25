@@ -28,6 +28,10 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
+  setUser(user) {
+    this.currentUserSubject.next(user);
+  }
+
   login(username, password) {
     return this.httpClient.post<any>(`${environment.apiUrl}/login`, {username, password}).pipe(map(user => {
       if (user) {

@@ -94,6 +94,7 @@
   font-weight: 600;
   line-height: 1.4rem;
 }
+
 .error-description {
   font-size: 0.9rem;
 }
@@ -121,7 +122,7 @@
   color: var(--color-light-gray);
 }
 
-.input-form.disabled-input input + label span {
+.input-form.disabled-input input+label span {
   color: #afe3ff;
 }
 
@@ -174,7 +175,7 @@ input.ng-invalid {
 }
 
 .input-form.input-form-error .error,
-input.ng-invalid + label + .error {
+input.ng-invalid+label+.error {
   display: block;
 }
 
@@ -200,8 +201,8 @@ label span {
 }
 
 
-input:focus + label span,
-input.ng-valid.ng-touched + label span {
+input:focus+label span,
+input.ng-valid.ng-touched+label span {
   font-size: 0.7rem;
   color: #28b4ff;
   top: -6px;
@@ -210,8 +211,8 @@ input.ng-valid.ng-touched + label span {
 }
 
 
-.input-form.input-form-error input.ng-valid + label span,
-input.ng-invalid + label span {
+.input-form.input-form-error input.ng-valid+label span,
+input.ng-invalid+label span {
   top: -6px;
   bottom: auto;
   font-size: 0.7rem;
@@ -263,6 +264,7 @@ input.ng-invalid + label span {
   position: absolute;
   display: none;
 }
+
 .code .copied.copied-shown {
   display: flex;
   animation: fade-from-bottom 0.2s ease-in;
@@ -273,6 +275,7 @@ input.ng-invalid + label span {
     height: 0;
     opacity: 0;
   }
+
   to {
     height: 25px;
     opacity: 1;
@@ -297,11 +300,9 @@ input.ng-invalid + label span {
   cursor: pointer;
   color: #0c4a74;
   font-weight: 600;
-  background-image: linear-gradient(
-    to right,
-    #0c4a74 80%,
-    rgba(255, 255, 255, 0) 0%
-  );
+  background-image: linear-gradient(to right,
+      #0c4a74 80%,
+      rgba(255, 255, 255, 0) 0%);
   background-position: bottom;
   background-size: 10px 1px;
   background-repeat: repeat-x;
@@ -373,7 +374,7 @@ input.ng-invalid + label span {
 
 
 .submit-btn svg,
-.check-btn svg  {
+.check-btn svg {
   width: 23px;
 }
 
@@ -391,6 +392,7 @@ input.ng-invalid + label span {
   from {
     transform: rotate(0);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -454,6 +456,7 @@ input.ng-invalid + label span {
   input {
     font-size: 0.8srem;
   }
+
   label span {
     font-size: 0.8rem;
     bottom: 14px;

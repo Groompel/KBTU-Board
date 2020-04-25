@@ -15,13 +15,13 @@ export class ApiService {
   }
 
   checkTelegramCode(code): Observable<any> {
-    return this.httpClient.get(`${environment.apiUrl}/telegram/code/check`).pipe(map(response => {
+    return this.httpClient.post(`${environment.apiUrl}/check-code/`, {code: code}).pipe(map(response => {
       return response;
     }));
   }
 
   getTelegramCode(): Observable<any> {
-    return this.httpClient.get(`${environment.apiUrl}/telegram/code`).pipe(map(code => {
+    return this.httpClient.get(`${environment.apiUrl}/code/`).pipe(map(code => {
       return code;
     }));
   }

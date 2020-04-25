@@ -9,13 +9,13 @@ nav {
   position: relative;
   display: flex;
   align-items: center;
-  height: 90px;
+  height: 70px;
   letter-spacing: 1px;
   color: #fff;
 }
 
 .nav-logo {
-  font-size: 37.5px;
+  font-size: 30px;
   font-weight: 700;
   text-transform: uppercase;
   height: 100%;
@@ -37,7 +37,6 @@ nav {
 .btn-container {
   border: 2px solid var(--color-accent);
   border-radius: var(--border-btn-radius);
-  color: var(--color-accent);
   height: 37px;
   width: 300px;
   text-transform: uppercase;
@@ -47,13 +46,20 @@ nav {
   font-weight: 700;
   font-size: 18px;
   margin-right: 40px;
-  transition: all 0.1s ease-in;
+  transition: all 0.2s ease-in;
   cursor: pointer;
 }
 
+.btn-container .btn-name {
+  transition: all 0.2s ease-in;
+  color: var(--color-accent);
+}
+
 .btn-container:hover {
-  color: rgb(31, 31, 31);
   background-color: var(--color-accent);
+}
+.btn-container:hover .btn-name {
+  color: #1f1f1f;
 }
 .btn-container:active {
   transform: translateY(2px);

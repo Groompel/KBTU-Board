@@ -54,7 +54,7 @@
               <span class="btn-name">Поиск</span>
             </button>
           </div>
-          <div class="checkbox-container">
+          <div class="checkbox-container search-in-description">
             <div class="checkbox-inner">
               <div class="checkbox search-in-description">
                 <!-- SVG checkbox icon begin -->
@@ -96,8 +96,8 @@
               </div>
             </div>
             <div class="options-window">
-              <div data-cat-id="1" class="option" [style.display]="category.value === 1 ? 'none' : 'flex'"><span
-                  class="option-name">Услуги</span></div>
+              <!-- <div data-cat-id="1" class="option" [style.display]="category.value === 1 ? 'none' : 'flex'"><span
+                  class="option-name">Услуги</span></div> -->
               <div data-cat-id="2" class="option" [style.display]="category.value === 2 ? 'none' : 'flex'"><span
                   class="option-name">Потеряно и найдено</span></div>
               <div data-cat-id="3" class="option" [style.display]="category.value === 3 ? 'none' : 'flex'"><span
@@ -123,14 +123,6 @@
               </div>
             </div>
             <div class="options-window">
-              <div data-cat-id="1" data-subcat-id="1" class="option"
-                [style.display]="1 === category.value ? 1 !== this.subcategory.value ? 'flex' : 'none' : 'none'">
-                <span class="option-name">Получить</span>
-              </div>
-              <div data-cat-id="1" data-subcat-id="2" class="option"
-                [style.display]="1 === category.value ? 2 !== this.subcategory.value ? 'flex' : 'none'  : 'none'">
-                <span class="option-name">Предложить</span>
-              </div>
               <div data-cat-id="2" data-subcat-id="1" class="option"
                 [style.display]="2 === category.value ? 1 !== this.subcategory.value ? 'flex' : 'none'  : 'none'">
                 <span class="option-name">Потерял</span>
@@ -145,9 +137,49 @@
               </div>
             </div>
           </div>
-          <div class="select first-posts-by" [style.display]="category.value !== 3 ? 'block' : 'none'">
+
+          <!-- Sort by select -->
+          <div class="select sort-by">
             <div class="label">
-              <div class="label-name">Сортировка</div>
+              <div class="label-name">Сортировать по</div>
+            </div>
+            <div class="selected-option">
+              <span class="option-name">{{ searchQueryFormUI.sortBy }}</span>
+              <div class="dropdown-triangle">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.81 14.102">
+                  <g id="dropdown-btn" data-name=" dropdown-btn" transform="translate(1.09 1.09)">
+                    <path id="Path_151" data-name="Path 151" d="M.452,0,0,15.961"
+                      transform="translate(21.31 0.001) rotate(43)" />
+                    <path id="Path_152" data-name="Path 152" d="M.454,16.407,0,0"
+                      transform="translate(11.923 11.602) rotate(133)" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="options-window">
+              <div class="option" data-cat-id="2" data-name="title"
+                [style.display]="searchQueryFormUI.sortBy !== 'Названию' && category.value === 2 ? 'flex' : 'none'">
+                <span class="option-name">Названию</span>
+              </div>
+              <div class="option" data-cat-id="2" data-name="date"
+                [style.display]="searchQueryFormUI.sortBy !== 'Дате' && category.value === 2 ? 'flex' : 'none'">
+                <span class="option-name">Дате</span>
+              </div>
+              <div class="option" data-cat-id="3" data-name="rating"
+                [style.display]="searchQueryFormUI.sortBy !== 'Рейтингу' && category.value === 3 ? 'flex' : 'none'">
+                <span class="option-name">Рейтингу</span>
+              </div>
+              <div class="option" data-cat-id="3" data-name="name"
+                [style.display]="searchQueryFormUI.sortBy !== 'Имени' && category.value === 3 ? 'flex' : 'none'">
+                <span class="option-name">Имени</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order select -->
+          <div class="select first-posts-by">
+            <div class="label">
+              <div class="label-name">Порядок</div>
             </div>
             <div class="selected-option">
               <span class="option-name">{{ searchQueryFormUI.firstPostsBy }}</span>
@@ -163,13 +195,13 @@
               </div>
             </div>
             <div class="options-window">
-              <div class="option"
-                [style.display]="searchQueryFormUI.firstPostsBy !== 'Сначала новые' ? 'flex' : 'none'">
-                <span class="option-name">Сначала новые</span>
+              <div class="option" data-cat-id="3" data-name="asc"
+                [style.display]="searchQueryFormUI.firstPostsBy !== 'По возрастанию' ? 'flex' : 'none'">
+                <span class="option-name">По возрастанию</span>
               </div>
-              <div class="option"
-                [style.display]="searchQueryFormUI.firstPostsBy !== 'Сначала старые' ? 'flex' : 'none'">
-                <span class="option-name">Сначала старые</span>
+              <div class="option" data-cat-id="3" data-name="desc"
+                [style.display]="searchQueryFormUI.firstPostsBy !== 'По убыванию' ? 'flex' : 'none'">
+                <span class="option-name">По убыванию</span>
               </div>
             </div>
           </div>

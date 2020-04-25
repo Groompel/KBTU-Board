@@ -3,18 +3,18 @@ import {
   Component,
   OnInit,
   ViewEncapsulation,
-} from "@angular/core";
-import { ApiService } from "../_services/api.service";
-import { FormControl, FormGroup } from "@angular/forms";
+} from '@angular/core';
+import { ApiService } from '../_services/api.service';
+import { FormControl, FormGroup } from '@angular/forms';
 import {
   cantBeZeroValidator,
-} from "../_shared/main-page-validators";
-import { Router } from "@angular/router";
+} from '../_shared/main-page-validators';
+import { Router } from '@angular/router';
 declare const $: any;
 @Component({
-  selector: "app-main-page",
-  templateUrl: "./main-page.component.html",
-  styleUrls: ["./main-page.component.css"],
+  selector: 'app-main-page',
+  templateUrl: './main-page.component.html',
+  styleUrls: ['./main-page.component.css'],
 })
 export class MainPageComponent implements OnInit, AfterViewInit {
   // Jquery variables
@@ -29,7 +29,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   bestTeachers: any;
 
   searchQuery = new FormGroup({
-    query: new FormControl(""),
+    query: new FormControl(''),
     category: new FormControl(0, cantBeZeroValidator()),
     subcategory: new FormControl(0, cantBeZeroValidator()),
   });
@@ -37,47 +37,47 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   // Getters
 
   get query() {
-    return this.searchQuery.get("query");
+    return this.searchQuery.get('query');
   }
   get category() {
-    return this.searchQuery.get("category");
+    return this.searchQuery.get('category');
   }
   get subcategory() {
-    return this.searchQuery.get("subcategory");
+    return this.searchQuery.get('subcategory');
   }
 
   selectedCategory = {
     id: 0,
-    name: "Категория",
+    name: 'Категория',
   };
   selectedSubcategory = {
     method: 0,
-    name: "Тип",
+    name: 'Тип',
   };
 
   categoryIds = [
     {
       id: 0,
       subcategories: {
-        elements: ["Тип"],
+        elements: ['Тип'],
       },
     },
     {
       id: 1,
       subcategories: {
-        elements: ["Получить", "Предложить"],
+        elements: ['Получить', 'Предложить'],
       },
     },
     {
       id: 2,
       subcategories: {
-        elements: ["Потерял", "Нашел"],
+        elements: ['Потерял', 'Нашел'],
       },
     },
     {
       id: 3,
       subcategories: {
-        elements: ["Научить"],
+        elements: ['Научить'],
       },
     },
   ];
@@ -93,28 +93,28 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       let ad = $(`.${adType} .posts-card`)[index];
       ad = $(ad);
 
-      if (parseInt(ad.attr("id")) === id) {
-        ad.toggleClass("posts-card-shown");
-        ad.find(".triangle").toggleClass("triangle-clicked");
+      if (parseInt(ad.attr('id')) === id) {
+        ad.toggleClass('posts-card-shown');
+        ad.find('.triangle').toggleClass('triangle-clicked');
       } else {
-        ad.removeClass("posts-card-shown");
+        ad.removeClass('posts-card-shown');
       }
     });
   }
 
   handleClicks(show: string) {
-    if (show === "category") {
-      this.categorySelect.find(".triangle").toggleClass("triangle-clicked");
+    if (show === 'category') {
+      this.categorySelect.find('.triangle').toggleClass('triangle-clicked');
       this.categorySelect
-        .find(".options-window")
-        .toggleClass("options-window-show");
-      this.categorySelect.find(".select").toggleClass("select-shown");
-    } else if (show === "subcategory") {
-      this.subcategorySelect.find(".triangle").toggleClass("triangle-clicked");
+        .find('.options-window')
+        .toggleClass('options-window-show');
+      this.categorySelect.find('.select').toggleClass('select-shown');
+    } else if (show === 'subcategory') {
+      this.subcategorySelect.find('.triangle').toggleClass('triangle-clicked');
       this.subcategorySelect
-        .find(".options-window")
-        .toggleClass("options-window-show");
-      this.subcategorySelect.find(".select").toggleClass("select-shown");
+        .find('.options-window')
+        .toggleClass('options-window-show');
+      this.subcategorySelect.find('.select').toggleClass('select-shown');
     }
   }
 
@@ -130,9 +130,9 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       }
     });
     const subсategoriesWindow = this.subcategorySelect.find(
-      ".options-window"
+      '.options-window'
     )[0];
-    const allOptions = $(subсategoriesWindow).find(".select-option");
+    const allOptions = $(subсategoriesWindow).find('.select-option');
 
     // Iterate through every category
     this.categoryIds.forEach((cat) => {
@@ -142,10 +142,10 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         $(allOptions).each((index) => {
           const currentOption = $($(allOptions)[index]);
           // Find options for chosen subcategroy and show them
-          if (parseInt(currentOption.attr("data-cat-id")) === id) {
-            $(currentOption).addClass("subcategory-option-show");
+          if (parseInt(currentOption.attr('data-cat-id')) === id) {
+            $(currentOption).addClass('subcategory-option-show');
           } else {
-            $(currentOption).removeClass("subcategory-option-show");
+            $(currentOption).removeClass('subcategory-option-show');
           }
         });
       }
@@ -169,15 +169,16 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   submitForm() {
 
     if (this.searchQuery.invalid) {
-      if (this.category.hasError("cantBeZeroError")) {
-        this.applyError(this.categorySelect.find(".select"), "input-error");
+      if (this.category.hasError('cantBeZeroError')) {
+        this.applyError(this.categorySelect.find('.select'), 'input-error');
       }
     } else {
       // Move to search page
-      this.router.navigate(["/search"], {queryParams: {
+      this.router.navigate([`/search/${this.category.value}/${this.subcategory.value}`], {queryParams: {
         query: this.query.value.trim(),
-        category: this.category.value,
-        subcategory: this.subcategory.value,
+        searchInDesc: false,
+        sortBy: this.category.value === 2 ? 'date' : 'name',
+        firstPostsBy: 'asc',
       }});
     }
   }
@@ -185,13 +186,13 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngAfterViewInit(): void {
-    this.profileWindow = $(".profile-window");
-    this.categorySelect = $("#category-select");
-    this.subcategorySelect = $("#subcategory-select");
-    this.searchbarForm = $("form.searchbar");
+    this.profileWindow = $('.profile-window');
+    this.categorySelect = $('#category-select');
+    this.subcategorySelect = $('#subcategory-select');
+    this.searchbarForm = $('form.searchbar');
     this.ads = {
-      lost: $(".posts-container .lost .posts-card-container .posts-card"),
-      found: $(".posts-container .found .posts-card-container .posts-card"),
+      lost: $('.posts-container .lost .posts-card-container .posts-card'),
+      found: $('.posts-container .found .posts-card-container .posts-card'),
     };
   }
 

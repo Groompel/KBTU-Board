@@ -48,8 +48,8 @@ export class AuthComponent implements OnInit, AfterViewInit {
   // Telegram response from the API
   telegramResponse = {
     message: "Подождите...",
-    valid: "",
-    telegramId: "",
+    valid: false,
+    showResponse: false,
   };
 
   // To show icons
@@ -291,6 +291,7 @@ export class AuthComponent implements OnInit, AfterViewInit {
     if (!this.isLoading.form) {
       this.isLoading.form = true;
       this.apiService.getTelegramCode().subscribe((obs) => {
+        console.log('Got code!')
         this.authResponse.showErrorResponse = false;
         this.isLoading.form = false;
         this.codeResponse = obs;
@@ -330,10 +331,20 @@ export class AuthComponent implements OnInit, AfterViewInit {
     });
     if (!this.telegramId.hasError("codeExpired") && !this.isLoading.telegram) {
       this.isLoading.telegram = true;
+      this.telegramResponse.message = "Подождите..."
       this.apiService
         .checkTelegramCode(this.codeResponse.code)
         .subscribe((resp) => {
           this.telegramResponse = resp;
+          this.telegramResponse.showResponse = true;
+          this.isLoading.telegram = false;
+          this.checkValidityOfTelegramCode();
+        }, err => {
+          this.telegramResponse = {
+            message: "Произошла ошибка, попробуйте еще раз.",
+            valid: false,
+            showResponse: true
+          }
           this.isLoading.telegram = false;
           this.checkValidityOfTelegramCode();
         });
@@ -342,7 +353,6 @@ export class AuthComponent implements OnInit, AfterViewInit {
 
   checkValidityOfTelegramCode() {
     if (this.telegramResponse.valid) {
-      this.telegramId.patchValue(this.telegramResponse.telegramId);
       this.telegramId.clearValidators();
       this.telegramId.setErrors(null);
       // To disable the telegram check button

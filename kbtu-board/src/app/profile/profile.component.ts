@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {PostsService} from '../_services/posts.service';
 import {Post} from '../../mocks/post';
 import {User} from '../_models/models';
-import {AuthMockService} from '../_services/auth-mock.service';
+import {AuthService} from '../_services/auth.service';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     public postsService: PostsService,
-    public authService: AuthMockService) {
+    public authService: AuthService) {
   }
 
   ngOnInit(): void {

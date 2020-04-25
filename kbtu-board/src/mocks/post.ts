@@ -1,16 +1,14 @@
 import { User } from 'src/app/_models/models';
 
 export interface Post {
-  id?: number;
+  id: number;
   subcategoryId?: number;
-  title?: string;
-  header?: string;
+  title: string;
   description: string;
-  reward?: string;
-  views?: number;
-  date?: Date;
-  user?: User;
-  img?: string;
-  user_id?: number;
+  creation_date: Date,
+  original_date: Date;
+  place: string,
+  photo: string;
+  user_id: number;
   //TODO: user_id field
 }

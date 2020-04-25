@@ -48,8 +48,9 @@ form.searchbar .query {
   flex: 1 0 45%;
   border: none;
   border-right: 1px solid var(--border-color-gray);
-  border-radius: 22.5px 0 0 22.5px;
+  border-radius: 5px 0 0 5px;
   padding-left: 18px;
+
 }
 
 form.searchbar .query::placeholder {
@@ -77,6 +78,7 @@ form.searchbar .query::placeholder {
 
 .selected-option {
   width: 80%;
+  font-weight: 600;
 }
 
 .input-error {
@@ -136,6 +138,18 @@ form.searchbar .query::placeholder {
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.295);
   display: none;
   z-index: 3;
+  animation: show-window 0.2s ease-in;
+}
+
+@keyframes show-window {
+  from {
+    max-height: 0;
+    overflow: hidden;
+  }
+  to {
+    max-height: 600px;
+    overflow: visible;
+  }
 }
 
 .options-window-show {
@@ -186,7 +200,7 @@ form.searchbar .query::placeholder {
 }
 
 .search-submit {
-  border-radius: 0 22.5px 22.5px 0;
+  border-radius: 0 5px 5px 0;
   height: 50px;
   border: none;
   flex: 0 0 7%;
@@ -681,6 +695,8 @@ form.searchbar .query::placeholder {
 .top-teachers .all-posts-btn {
   background-color: transparent;
   border: 2px solid var(--color-accent);
+}
+.top-teachers .all-posts-btn span, .header .all-posts-btn span {
   color: var(--color-accent);
 }
 
@@ -756,15 +772,15 @@ form.searchbar .query::placeholder {
   }
 
   #category-select .select {
-    border-radius: 22.5px 0 0 22.5px;
+    border-radius: 5px 0 0 5px;
   }
 
   #subcategory-select .select {
-    border-radius: 0 22.5px 22.5px 0;
+    border-radius: 0 5px 5px 0;
   }
 
   .options-window-show {
-    border-radius: 0 0 22.5px 22.5px;
+    border-radius: 0 0 5px 5px;
   }
 
   #subcategory-select .options-window {
@@ -775,17 +791,17 @@ form.searchbar .query::placeholder {
   }
 
   #category-select .select-shown {
-    border-radius: 22.5px 0 0 0;
+    border-radius: 5px 0 0 0;
   }
   #subcategory-select .select-shown {
-    border-radius: 0 22.5px 0 0;
+    border-radius: 0 5px 0 0;
   }
 
   .select-option, .selected-option {
     font-size: 1rem;
   }
   .select-option:last-child {
-    border-radius: 0 0 22.5px 22.5px;
+    border-radius: 0 0 5px 5px;
   }
 
   .posts-card-title {
@@ -929,12 +945,12 @@ form.searchbar .query::placeholder {
   #category-select .select,
   #subcategory-select .select {
     border: none;
-    border-radius: 22.5px;
+    border-radius: 5px;
   }
 
   #category-select .select-shown,
   #subcategory-select .select-shown {
-    border-radius: 22.5px 22.5px 0 0;
+    border-radius: 5px 5px 0 0;
   }
 
   #subcategory-select .options-window {

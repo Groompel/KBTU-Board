@@ -65,9 +65,11 @@
           <div class="telegram-verification register" *ngIf="codeResponse.code !== '' ">
             <div class="text">
               <h4>Подтверждение через Telegram.</h4>
-              <div>Для подтверждения аккаунта требуется верификация через
+              <div>
+                Для подтверждения аккаунта требуется верификация через
                 мессенджер Telegram.
-                Если у Вас его нет, то можете <a href="https://web.telegram.org/#/login" target="_blank">cоздать аккаунт
+                Если у Вас его нет, то можете
+                <a href="https://web.telegram.org/#/login" target="_blank">cоздать аккаунт
                   здесь</a> или скачать приложение для
                 <a href="https://play.google.com/store/apps/details?id=org.telegram.messenger"
                   target="_blank">Android</a>
@@ -176,8 +178,9 @@
 
               <!-- SVG loading icon begin -->
               <!-- [style.display]="isLoading.telegram ? 'block' : 'none'"  -->
-              <svg class="loading-icon" version="1.1" [style.display]="isLoading.telegram ? 'block' : 'none'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+              <svg class="loading-icon" version="1.1" [style.display]="isLoading.telegram ? 'block' : 'none'"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
                 <path
                   d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
                   <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s" from="0 50 50"
@@ -189,7 +192,8 @@
               <!-- SVG loading icon end -->
 
               <!-- SVG error icon begin -->
-              <svg [style.display]="!telegramResponse.valid && telegramResponse.valid !== ''  && !isLoading.telegram ? 'block' : 'none'"
+              <svg
+                [style.display]="!telegramResponse.valid && telegramResponse.valid  && !isLoading.telegram ? 'block' : 'none'"
                 viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="m256 512c-141.160156 0-256-114.839844-256-256s114.839844-256 256-256 256 114.839844 256 256-114.839844 256-256 256zm0-475.429688c-120.992188 0-219.429688 98.4375-219.429688 219.429688s98.4375 219.429688 219.429688 219.429688 219.429688-98.4375 219.429688-219.429688-98.4375-219.429688-219.429688-219.429688zm0 0" />
@@ -205,22 +209,23 @@
               Проверить
             </button>
 
-            <div class="response-info" [style.display]="isLoading.telegram || telegramResponse.valid !== '' ? 'block' : 'none'"
-              [style.color]="telegramResponse.valid !== '' ? telegramResponse.valid ? 'var(--color-medium-gray' : 'var(--color-error)' : 'var(--color-medium-gray)'">
+            <div class="response-info"
+              [style.display]="isLoading.telegram || telegramResponse.showResponse ? 'block' : 'none'"
+              [style.color]="telegramResponse.showResponse  ? telegramResponse.valid || isLoading.telegram ? 'var(--color-medium-gray' : 'var(--color-error)' : 'var(--color-medium-gray)'">
               {{ telegramResponse.message }}
-              <div class="response-username">{{ telegramResponse.telegramId !== '' ? "(" + telegramResponse.telegramId + ")" : '' }}</div>
+
             </div>
           </div>
 
           <button class="submit-btn" type="submit">
-            <svg class="loading-icon" version="1.1" [style.display]="isLoading.form ? 'block' : 'none'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                viewBox="0 0 100 100" xml:space="preserve">
-                <path
-                  d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
-                  <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s" from="0 50 50"
-                    to="360 50 50" repeatCount="indefinite" />
-                </path>
-              </svg>
+            <svg class="loading-icon" version="1.1" [style.display]="isLoading.form ? 'block' : 'none'"
+              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100"
+              xml:space="preserve">
+              <path d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+                <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s" from="0 50 50"
+                  to="360 50 50" repeatCount="indefinite" />
+              </path>
+            </svg>
             {{ currentTab.buttonName }}
           </button>
         </form>
